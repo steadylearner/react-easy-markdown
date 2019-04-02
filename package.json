@@ -1,0 +1,33 @@
+{
+  "name": "react-easy-markdown",
+  "version": "0.0.0.1",
+  "description": "React marked-markdown improved without null title and with shortcuts for links.",
+  "main": "./lib/index.js",
+  "dependencies": {
+    "dompurify": "^1.0.10",
+    "highlight.js": "^9.15.6",
+    "jsdom": "^14.0.0",
+    "marked": "^0.6.1",
+    "prop-types": "^15.7.2"
+  },
+  "peerDependencies": {
+    "react": "^16.8.0"
+  },
+  "devDependencies": {},
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/steadylearner/react-easy-markdown.git"
+  },
+  "keywords": [
+    "React",
+    "markdown",
+    "jsx",
+    "javascript",
+    "How to write markdown with React",
+    "steadylearner",
+    "www.steadylearner.com"
+  ],
+  "author": "www.steadylearner.com(The original code from https://github.com/Vincent-P/react-marked-markdown)",
+  "license": "MIT"
+}

@@ -1,0 +1,15 @@
+# Dependencies
+node_modules/
+
+# ignore type files
+.gitignore/
+
+# ignore examples
+examples/
+
+# ignore test files
+__tests__/
+
+# src shouldn't be included in NPM
+src/
+
