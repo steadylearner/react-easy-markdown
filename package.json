@@ -3,7 +3,11 @@
   "version": "1.0.0",
   "description": "React marked-markdown improved without null title and with shortcuts for links.",
   "main": "./lib/index.js",
+  "scripts": {
+    "build": "babel src -d lib"
+  },
   "dependencies": {
+    "@babel/runtime": "^7.4.3",
     "dompurify": "^1.0.10",
     "highlight.js": "^9.15.6",
     "jsdom": "^14.0.0",
@@ -13,8 +17,17 @@
   "peerDependencies": {
     "react": "^16.8.0"
   },
-  "devDependencies": {},
-  "scripts": {},
+  "devDependencies": {
+    "@babel/plugin-transform-runtime": "^7.4.3",
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.4.0",
+    "@babel/plugin-proposal-class-properties": "^7.4.0",
+    "@babel/preset-env": "^7.4.2",
+    "@babel/preset-react": "^7.0.0"
+  },
+  "scripts": {
+    "build": "babel src -d lib"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/steadylearner/react-easy-md.git"
