@@ -37,8 +37,8 @@ For [Steadylearner][Steadylearner] uses markdown intensively, it may include mor
 
 ## Install
 
-* Type `$npm install --save react-easy-markdown` or `$yarn add react-easy-markdown`
-* Import component(s) you want
+1. Type `$npm install --save react-easy-markdown` or `$yarn add react-easy-markdown` in your **CLI**
+2. Import component(s) you want
 ```js
 import ReactMarkdown, { ReactMarkdownInput } from 'react-easy-markdown';
 ```
