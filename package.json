@@ -1,6 +1,6 @@
 {
   "name": "react-easy-md",
-  "version": "1.0.0",
+  "version": "1.0.1-0",
   "description": "React marked-markdown improved without null title and with shortcuts for links.",
   "main": "./lib/index.js",
   "scripts": {
@@ -24,9 +24,6 @@
     "@babel/plugin-proposal-class-properties": "^7.4.0",
     "@babel/preset-env": "^7.4.2",
     "@babel/preset-react": "^7.0.0"
-  },
-  "scripts": {
-    "build": "babel src -d lib"
   },
   "repository": {
     "type": "git",
