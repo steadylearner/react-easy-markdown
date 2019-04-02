@@ -4,7 +4,8 @@
   "description": "React marked-markdown improved without null title and with shortcuts for links.",
   "main": "./lib/index.js",
   "scripts": {
-    "build": "babel src -d lib"
+    "build": "babel src -d lib",
+    "prepare": "babel src --plugins \"@babel/plugin-transform-runtime\" --ignore __tests__ --out-dir ./lib"
   },
   "dependencies": {
     "@babel/runtime": "^7.4.3",
