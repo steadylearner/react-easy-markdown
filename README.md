@@ -29,7 +29,7 @@ But the differences are
 
 1. It solved the problem of showing `null` title. 
 2. `prefixAndReplacement` prop is included to help you write shortcuts for `<a>` inside markdown.
-3. The modules used here were written with **class**. They were re-written to make **functional components** to be more compatible with current **React** development trend.
+3. The modules used here were written with **class**. They became **functional components** to be more compatible with current **React** development trend.
 
 The original Github repository is archived so I made this package to share the code from the former repository with some improvments. 
 
@@ -87,7 +87,7 @@ ReactDOM.render(<App />, rootElement);
 ## API
 
 1. You can refer to [react-marked-markdown][react-marked-markdown] first for this is just the improved version of it.
-2. To understand prefixWithReplacement better, please visit [How to write less code for links in markdown with React][How to write less code for links in markdown with React].
+2. To understand **prefixWithReplacement** better, please visit [How to write less code for links in markdown with React][How to write less code for links in markdown with React].
 
 ### Usage of prefixWithReplacement
 
