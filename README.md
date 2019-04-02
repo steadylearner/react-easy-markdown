@@ -1,8 +1,8 @@
 <!-- Shortcut -->
 
 [react-marked-markdown]: https://github.com/Vincent-P/react-marked-markdown
-[React Easy Markdown Github Repository]: https://github.com/steadylearner/react-easy-markdown
-[Codesandbox for react-easy-markdown]: https://codesandbox.io/s/wz9pp1xpn8
+[React Easy Markdown Github Repository]: https://github.com/steadylearner/react-easy-md
+[Codesandbox for react-easy-md]: https://codesandbox.io/s/wz9pp1xpn8
 [How to enable code syntax highlight in React App]: https://medium.com/@steadylearner/how-to-enable-code-syntax-highlight-in-react-app-38463498fa6e
 [How to write less code for links in markdown with React]: https://www.steadylearner.com/blog/read/How-to-write-less-code-for-links-in-markdown-with-React
 
@@ -33,14 +33,17 @@ But the differences are
 
 The original Github repository is archived so I made this package to share the code from the former repository with some improvments. 
 
-For [Steadylearner][Steadylearner] uses markdown intensively, it may include more features later. 
+For [Steadylearner][Steadylearner] uses markdown intensively, it may include more features later.
 
+The name of package became "react-easy-md" for the NPM Package didn't allow "React Easy Markdown" for similarity.
+You may think that React Easy Mardkdown refer to `react-easy-md` in this documentation.
+	
 ## Install
 
-1. Type `$npm install --save react-easy-markdown` or `$yarn add react-easy-markdown` in your **CLI**
+1. Type `$npm install --save react-easy-md` or `$yarn add react-easy-md` in your **CLI**
 2. Import component(s) you want
 ```js
-import ReactMarkdown, { ReactMarkdownInput } from 'react-easy-markdown';
+import ReactMarkdown, { ReactMarkdownInput } from 'react-easy-md';
 ```
 
 ## Example
@@ -54,7 +57,7 @@ Every props used here is optional but it will be a starting point for your app. 
 import React from "react";
 import ReactDOM from "react-dom";
 
-import ReactMarkdown from "react-easy-markdown";
+import ReactMarkdown from "react-easy-md";
 
 function App() {
   return (
@@ -123,7 +126,7 @@ equal to
 [Github](https://github.com/steadylearner)
 ```
 
-With ReactMarkdown from react-easy-markdown, **you don't have to type the entire paths anymore**. It helps you **not to repeat what you know they will do** with some help from programming.
+With ReactMarkdown from react-easy-md, **you don't have to type the entire paths anymore**. It helps you **not to repeat what you know they will do** with some help from programming.
 
 ## What is Next?
 
