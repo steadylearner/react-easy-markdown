@@ -10,6 +10,6 @@ examples/
 # ignore test files
 __tests__/
 
-# src shouldn't be included in NPM
-src/
-
+# src should be included to prepare script to work
+# https://docs.npmjs.com/misc/scripts
+# You don't have to manually build this with this script
