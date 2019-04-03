@@ -1,12 +1,8 @@
 {
-  "name": "react-marked-markdown",
-  "version": "1.4.7-0",
-  "description": "Some React Components to use Markdown easily",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/vincent-p/react-marked-markdown.git"
-  },
-  "license": "MIT",
+  "name": "react-easy-md",
+  "version": "1.0.1-1",
+  "description": "React marked-markdown improved without null title and with shortcuts for links.",
+  "main": "./lib/index.js",
   "scripts": {
     "prepare": "babel src --plugins \"transform-runtime\" --ignore __tests__ --out-dir ./dist",
     "lint": "eslint ./src",
@@ -48,5 +44,20 @@
   },
   "peerDependencies": {
     "react": "^15.2.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/steadylearner/react-easy-md.git"
+  },
+  "keywords": [
+    "React",
+    "markdown",
+    "jsx",
+    "javascript",
+    "How to write markdown with React",
+    "steadylearner",
+    "www.steadylearner.com"
+  ],
+  "author": "www.steadylearner.com(The original code from https://github.com/Vincent-P/react-marked-markdown)",
+  "license": "MIT"
 }
