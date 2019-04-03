@@ -1,6 +1,6 @@
 {
   "name": "react-easy-md",
-  "version": "1.0.1-2",
+  "version": "1.0.1-3",
   "description": "React marked-markdown improved without null title and with shortcuts for links.",
   "scripts": {
     "prepare": "babel src --plugins \"transform-runtime\" --ignore __tests__ --out-dir ./dist",
