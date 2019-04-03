@@ -46,9 +46,11 @@ export default class MarkdownPreview extends React.Component {
     marked.setOptions(options);
   }
   render() {
-      const { value, className, prefixWithReplacement, titleMessage, } = this.props;
-      const renderer = new marked.Renderer();
-      renderer.link = (href, title, text) => {
+    const { value, className, prefixWithReplacement, titleMessage, } = this.props;
+
+    const renderer = new marked.Renderer();
+    // Remove null title problem and you can define shortcuts for <a> in markdown
+    renderer.link = (href, title, text) => {
 
       const isHrefeIncludeAnyPrefix = prefixWithReplacement.filter(x => href.startsWith(x[0]));
 
@@ -64,8 +66,7 @@ export default class MarkdownPreview extends React.Component {
       }
     };
 
-    const html = DOMPurify.sanitize(marked(value || "", { renderer }));
-
+    const html = DOMPurify.sanitize(marked(value || '', { renderer }));
 
     return (
       <div
@@ -77,15 +78,16 @@ export default class MarkdownPreview extends React.Component {
 }
 
 MarkdownPreview.propTypes = {
-  value: PropTypes.string.isRequired,
+  value: PropTypes.string,
   className: PropTypes.string,
   markedOptions: PropTypes.object,
   prefixWithReplacement: PropTypes.arrayOf.arrays,
-  titleMessage: PropTypes.string,
+  titleMessage: PropTypes.string
 };
 
 MarkdownPreview.defaultProps = {
-  value: "",
+  value: "**This is default value. Write Your own markdown**",
   prefixWithReplacement: [["s-", "https://"]],
-  titleMessage: "Click it will open a new tab at",
+  titleMessage: "Click it will open a new tab at"
 };
+

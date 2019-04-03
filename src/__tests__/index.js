@@ -1,3 +1,6 @@
+// refer this to test with Jest later
+// Syntax is very similar
+
 import React from 'react';
 import { shallow } from 'enzyme';
 import { expect } from 'chai';

@@ -1,3 +1,11 @@
+<!-- What I have to do later -->
+<!--
+  1. Update outdated packages and write your own package.json
+  2. Organize folder structure to use Jest and Enzyme 
+  3. Write some tests
+  4. Include real example from https://www.steadylearner.com/markdown
+-->
+
 <!-- Shortcut -->
 
 [react-marked-markdown]: https://github.com/Vincent-P/react-marked-markdown
@@ -29,21 +37,52 @@ But the differences are
 
 1. It solved the problem of showing `null` title. 
 2. `prefixAndReplacement` prop is included to help you write shortcuts for `<a>` inside markdown.
-3. The modules used here were written with **class**. They became **functional components** to be more compatible with current **React** development trend.
+3. The modules used here were written with **class** and I am thinking of turning them into functional components later.
+(I modified them to be functional components to be more compatible with current **React** development trend but it didn't work well. Only to learn that ref can't be used with functional components and it is not easy to make functional components when class components have it.)
+4. LiveMarkdownEditor is removed from the package to reduce package size and example codes from [Markdown Editor Page][Markdown] from [Steadylearner][Steadylearner] will replace its role later. 
 
 The original Github repository is archived so I made this package to share the code from the former repository with some improvments. 
 
-For [Steadylearner][Steadylearner] uses markdown intensively, it may include more features later.
-
 The name of package became "react-easy-md" for the NPM Package didn't allow "React Easy Markdown" for similarity.
 You may think that React Easy Mardkdown refer to `react-easy-md` in this documentation.
-	
+
+For [Steadylearner][Steadylearner] uses markdown intensively, it may include more features later with examples and tests.
+
 ## Install
 
 1. Type `$npm install --save react-easy-md` or `$yarn add react-easy-md` in your **CLI**
 2. Import component(s) you want
 ```js
-import ReactMarkdown, { ReactMarkdownInput } from 'react-easy-md';
+import { MarkdownPreviw, MarkdownInput } from 'react-easy-md';
+```
+3. If you use **webpack** and see some warnings and errors with this package, you may include
+```js
+// webpack.config.js
+// (refer to examples/config/webpack.config.js in this repository)
+
+const FilterWarningsPlugin = require('webpack-filter-warnings-plugin'); 
+// To suppres warning from using react-easy-md
+
+moudle.exports = () => {
+  return({
+    module: {
+      // It is important to include it to use react-easy-md without errors
+      node: {
+	fs: "empty",
+	tls: "empty",
+	net: "empty",
+	child_process: "empty",
+      },
+      // To remove waring from using react-easy-md
+      plugins: [
+        new FilterWarningsPlugin({
+	  exclude: /Critical dependency: the request of a dependency is an expression/,
+	})
+      ]
+    }
+  })
+}
+
 ```
 
 ## Example
@@ -57,12 +96,12 @@ Every props used here is optional but it will be a starting point for your app. 
 import React from "react";
 import ReactDOM from "react-dom";
 
-import ReactMarkdown from "react-easy-md";
+import { MarkdownPreview } from "react-easy-md";
 
 function App() {
   return (
     <section className="App">
-      <ReactMarkdown
+      <MarkdownPreview
         // Refer to www.steadylearner.com/markdown page
         // value={test} // Comment it to show default value
         markedOptions={{
@@ -132,11 +171,11 @@ With ReactMarkdown from react-easy-md, **you don't have to type the entire paths
 
 1. More features **to help you write less markdown** with React
 2. Examples similar to [Steadylearner Markdown Editor Page][markdown] and other pages at [Steadylearner][Steadylearner]
-3. **Tests with React**
+3. Update the package to use latest dependencies and test it with **Jest**
+4. **Tests and examples**
 
 ## Read More
 
 1. [Steadylearner Blog Posts for examples][blog]
 2. [Steadylearner Markdown Editor Page][markdown]
 3. [prop-passer to help you write less prop and className][prop-passer]
-

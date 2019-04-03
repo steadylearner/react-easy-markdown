@@ -1,15 +1,15 @@
-// After you install react-md with yarn or npm
+// After you install react-easy-md with yarn or npm
 
 import React from "react";
 import ReactDOM from "react-dom";
 
 // Refer to www.steadylearner.com/markdown page
-import ReactMarkdown from "react-easy-markdown";
+import { MarkdownPreview } from "react-easy-md";
 
 function App() {
   return (
     <section className="App"
-      <ReactMarkdown
+      <MarkdownPreview
         // value={test} // Comment it to show default value
         markedOptions={{
           // Read https://medium.com/@steadylearner/how-to-enable-code-syntax-highlight-in-react-app-38463498fa6e
