@@ -2,7 +2,6 @@
   "name": "react-easy-md",
   "version": "1.0.1-1",
   "description": "React marked-markdown improved without null title and with shortcuts for links.",
-  "main": "./lib/index.js",
   "scripts": {
     "prepare": "babel src --plugins \"transform-runtime\" --ignore __tests__ --out-dir ./dist",
     "lint": "eslint ./src",
