@@ -25,7 +25,7 @@
 
 <!-- \Steadylearner -->
 
-[![Travis branch](https://img.shields.io/travis/Steadylearner/react-marked-markdown/master.svg?maxAge=2592000)]() [![npm version](https://badge.fury.io/js/react-easy-md.svg)](https://badge.fury.io/js/react-easy-md) [![npm](https://img.shields.io/npm/dt/react-easy-md.svg?maxAge=2592000)]()
+[![Travis branch](https://img.shields.io/travis/Steadylearner/react-easy-md/master.svg?maxAge=2592000)]() [![npm version](https://badge.fury.io/js/react-easy-md.svg)](https://badge.fury.io/js/react-easy-md) [![npm](https://img.shields.io/npm/dt/react-easy-md.svg?maxAge=2592000)]()
 
 # React Easy Markdown
 
