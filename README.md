@@ -44,7 +44,8 @@ But the differences are
 The original Github repository is archived so I made this package to share the code from the former repository with some improvments. 
 
 The name of package became "react-easy-md" for the NPM Package didn't allow "React Easy Markdown" for similarity.
-You may think that React Easy Mardkdown refer to `react-easy-md` in this documentation.
+
+(You may think that React Easy Mardkdown refer to `react-easy-md` in this documentation.)
 
 For [Steadylearner][Steadylearner] uses markdown intensively, it may include more features later with examples and tests.
 
