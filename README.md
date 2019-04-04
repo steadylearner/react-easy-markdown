@@ -199,7 +199,7 @@ With ReactMarkdown from react-easy-md, **you don't have to type the entire paths
  1. [Start with Markdown-Tutorial][Markdown-Tutorial]
  2. [Markdown CheatSheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
  3. [Use mark down for Github page](https://help.github.com/articles/getting-started-with-writing-and-formatting-on-github/)
- 4. [Learn Markdown in X Minutes]https://learnxinyminutes.com/docs/markdown
+ 4. [Learn Markdown in X Minutes](https://learnxinyminutes.com/docs/markdown)
  5. [Example to make Github README.md File](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2)
  6. [Steadylearner Markdown Live Editor][markdown]
  7. [Markdown to html](https://markdowntohtml.com/)
