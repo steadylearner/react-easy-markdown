@@ -72,31 +72,26 @@ moudle.exports = () => {
     module: {
       
       node: {
-	fs: "empty",
-	tls: "empty",
-	net: "empty",
-	child_process: "empty",
+	    fs: "empty",
+	    tls: "empty",
+	    net: "empty",
+	    child_process: "empty",
       },
  
       optimization: {
-        minimizer: [
-          new TerserPlugin({
-
-	  }),
-	],
+        minimizer: [new TerserPlugin()],
       },
 
       // To remove warning from 'jsdom' used inside react-easy-md 
       plugins: [
         new FilterWarningsPlugin({
-	  exclude: /Critical dependency: the request of a dependency is an expression/,
-	})
+	      exclude: /Critical dependency: the request of a dependency is an expression/,
+	    })
       ],
 
     }
   })
 }
-
 ```
 
 ## Example
