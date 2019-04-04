@@ -89,7 +89,7 @@ moudle.exports = () => {
       plugins: [
         new FilterWarningsPlugin({
 	      exclude: /Critical dependency: the request of a dependency is an expression/,
-	    })
+	}),
       ],
 
     }
@@ -158,7 +158,7 @@ prefixWithReplacement={[
 
 We pass various **prefixes** with **its replacements** with data type **array of arrays**.
 
-Then, Inside `ReactMarkdown` module it will convert 
+Then, Inside `MarkdownPreview` module it will convert 
 ```md
 [Blog](s-/blog)
 [LinkedIn](l-/steady-learner-3151b7164)
@@ -177,7 +177,7 @@ equal to
 [Github](https://github.com/steadylearner)
 ```
 
-With ReactMarkdown from react-easy-md, **you don't have to type the entire paths anymore**. It helps you **not to repeat what you know they will do**.
+With `prefiexWithReplacement` from react-easy-md, **you don't have to type the entire paths anymore**. It helps you **not to repeat what you know they will do**.
 
 ## What is Next?
 
