@@ -55,7 +55,9 @@ For [Steadylearner][Steadylearner] uses markdown intensively, it may include mor
 ```js
 import { MarkdownPreviw, MarkdownInput } from 'react-easy-md';
 ```
+
 3. If you use **webpack** and see some warnings and errors with this package, you may include
+
 ```js
 // Refer to webpack.config.js at
 // https://github.com/steadylearner/react-easy-md/blob/master/examples/config/webpack.config.js
@@ -82,16 +84,15 @@ moudle.exports = () => {
 
 	  }),
 	],
-      }
+      },
 
       // To remove warning from 'jsdom' used inside react-easy-md 
       plugins: [
         new FilterWarningsPlugin({
 	  exclude: /Critical dependency: the request of a dependency is an expression/,
 	})
-      ]
+      ],
 
-      
     }
   })
 }
