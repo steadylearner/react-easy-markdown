@@ -57,28 +57,41 @@ import { MarkdownPreviw, MarkdownInput } from 'react-easy-md';
 ```
 3. If you use **webpack** and see some warnings and errors with this package, you may include
 ```js
-// webpack.config.js
-// (refer to examples/config/webpack.config.js in this repository)
+// Refer to webpack.config.js at
+// https://github.com/steadylearner/react-easy-md/blob/master/examples/config/webpack.config.js
 
-const FilterWarningsPlugin = require('webpack-filter-warnings-plugin'); 
-// To suppres warning from using react-easy-md
+// Errors in developement
+const FilterWarningsPlugin = require('webpack-filter-warnings-plugin');
+// For production, use it instead of uglifyjsplugin
+const TerserPlugin = require('terser-webpack-plugin'); //
 
 moudle.exports = () => {
   return({
     module: {
-      // It is important to include it to use react-easy-md without errors
+      
       node: {
 	fs: "empty",
 	tls: "empty",
 	net: "empty",
 	child_process: "empty",
       },
-      // To remove waring from using react-easy-md
+ 
+      optimization: {
+        minimizer: [
+          new TerserPlugin({
+
+	  }),
+	],
+      }
+
+      // To remove warning from 'jsdom' used inside react-easy-md 
       plugins: [
         new FilterWarningsPlugin({
 	  exclude: /Critical dependency: the request of a dependency is an expression/,
 	})
       ]
+
+      
     }
   })
 }
@@ -165,7 +178,7 @@ equal to
 [Github](https://github.com/steadylearner)
 ```
 
-With ReactMarkdown from react-easy-md, **you don't have to type the entire paths anymore**. It helps you **not to repeat what you know they will do** with some help from programming.
+With ReactMarkdown from react-easy-md, **you don't have to type the entire paths anymore**. It helps you **not to repeat what you know they will do**.
 
 ## What is Next?
 
@@ -177,5 +190,17 @@ With ReactMarkdown from react-easy-md, **you don't have to type the entire paths
 ## Read More
 
 1. [Steadylearner Blog Posts for examples][blog]
-2. [Steadylearner Markdown Editor Page][markdown]
-3. [prop-passer to help you write less prop and className][prop-passer]
+2. [prop-passer to help you write less prop and className][prop-passer]
+
+## Where to learn and use markdown?
+
+ [Markdown-Tutorial]: https://www.markdowntutorial.com/
+
+ 1. [Start with Markdown-Tutorial][Markdown-Tutorial]
+ 2. [Markdown CheatSheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
+ 3. [Use mark down for Github page](https://help.github.com/articles/getting-started-with-writing-and-formatting-on-github/)
+ 4. [Learn Markdown in X Minutes]https://learnxinyminutes.com/docs/markdown
+ 5. [Example to make Github README.md File](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2)
+ 6. [Steadylearner Markdown Live Editor][markdown]
+ 7. [Markdown to html](https://markdowntohtml.com/)
+ 8. [Markdown Interpreter](https://dillinger.io/)
