@@ -112,7 +112,8 @@ moudle.exports = () => {
 1. Upgrade the package to be compatible with **CRA**
 2. **Jest** and **Enzyme** is used for testing
 3. **copy** and **html** function is included to copy content and turn it into html
-4. substitutePrefix function was used to refactor app in the behind
+4. **defaultValue** for markdownPreview is ""
+5. substitutePrefix function was used to refactor it
 
 ## Example
 
@@ -135,8 +136,8 @@ function App() {
   return (
     <section className="App">
       <MarkdownPreview
-        // value={html(test)} // Comment it to show default value
-        value={example} // for we eallow sanitize false and allow html, it should show the same result
+        // value={html(test)} // for we allow sanitize false and allow html, it should show the same result
+        value={example} // default value is ""
         markedOptions={{
           langPrefix: "hljs ", // hljs prefix for react-easy-md has its code part to used with it 
           sanitize: false, // allow html
