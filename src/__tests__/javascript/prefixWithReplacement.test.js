@@ -1,7 +1,9 @@
+// equivalent to substituePrefix API for this package
+
 const {
   prefixWithReplacement,
   prefixesWithReplacements,
-} = require("./prefixWithReplacement");
+} = require("../../../javascript/prefixWithReplacement");
 
 // 1. Test the base function for our package.
 describe('Test prefixWithReplacement when href include prefix given and vice versa', () => {

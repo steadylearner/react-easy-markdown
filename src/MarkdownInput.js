@@ -1,5 +1,5 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
 export default class MarkdownInput extends React.Component {
   render() {
@@ -20,5 +20,6 @@ MarkdownInput.propTypes = {
   onChange: PropTypes.func,
   value: PropTypes.string,
   placeholder: PropTypes.string,
-  className: PropTypes.string,
+  className: PropTypes.string
 };
+

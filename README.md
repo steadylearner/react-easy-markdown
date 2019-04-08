@@ -13,6 +13,7 @@
 [Codesandbox for react-easy-md]: https://codesandbox.io/s/wz9pp1xpn8
 [How to enable code syntax highlight in React App]: https://medium.com/@steadylearner/how-to-enable-code-syntax-highlight-in-react-app-38463498fa6e
 [How to write less code for links in markdown with React]: https://www.steadylearner.com/blog/read/How-to-write-less-code-for-links-in-markdown-with-React
+[marked]: https://github.com/markedjs/marked
 
 <!-- \Shortcut -->
 
@@ -25,11 +26,13 @@
 
 <!-- \Steadylearner -->
 
-[![Travis branch](https://img.shields.io/travis/Steadylearner/react-easy-md/master.svg?maxAge=2592000)]() [![npm version](https://badge.fury.io/js/react-easy-md.svg)](https://badge.fury.io/js/react-easy-md) [![npm](https://img.shields.io/npm/dt/react-easy-md.svg?maxAge=2592000)]()
+<!-- [![Travis branch](https://img.shields.io/travis/Steadylearner/react-easy-md/master.svg?maxAge=2592000)]() -->
+
+ [![npm version](https://badge.fury.io/js/react-easy-md.svg)](https://badge.fury.io/js/react-easy-md) [![npm](https://img.shields.io/npm/dt/react-easy-md.svg?maxAge=2592000)]()
 
 # React Easy Markdown
 
-Some React components to help you write markdown with ease.
+React components with JavaScript functions to help you write Markdown.
 
 ---
 
@@ -40,18 +43,19 @@ But the differences are
 1. It solved the problem of showing `null` title.
 2. `prefixAndReplacement` prop is included to help you write shortcuts for `<a>` inside markdown.
 3. The modules used here were written with **class** and I am thinking of turning them into functional components later.
-4. LiveMarkdownEditor is removed from the package to reduce package size and example codes from [Markdown Editor Page][Markdown] from [Steadylearner][Steadylearner] will replace its role later. 
+4. LiveMarkdownEditor is removed from the package to reduce package size and example code from [Markdown Editor Page][Markdown] at [Steadylearner][Steadylearner] will replace its role later. 
+5. You can use api such as copy(ToClipBoard) and html to turn your markdown to html 
 
 To explain more about `1.`,You can define title in Markdown with  syntax such as
 `[Website](https://www.steadylearner.com/ "Website")`.
 
 But having default value solves  the problem of showing **null**  title when users forget to define it or when you get data from the other websites that doesn't have title value with `<a>` tag.
 
-It will also be convenient to have default values for it to save your time when you write markdown many times.
+It will also be convenient to have default values to save your time and space in .md file when you write markdown.
 
-The original Github repository is archived so I made this package to share the code from the former repository with some improvments. 
+The original Github repository is archived so this package was made to share the code from the former repository with some improvements. 
 
-The name of package became "react-easy-md" for the NPM Package didn't allow "React Easy Markdown" for similarity.
+The name of package became "react-easy-md" for the NPM Package didn't allow "react-easy -markdown" for similarity.
 
 (You may think that React Easy Mardkdown refer to `react-easy-md` in this documentation.)
 
@@ -71,9 +75,9 @@ import { MarkdownPreviw, MarkdownInput } from 'react-easy-md';
 // Refer to webpack.config.js at
 // https://github.com/steadylearner/react-easy-md/blob/master/examples/config/webpack.config.js
 
-// Errors in developement
+// Remove errors in developement
 const FilterWarningsPlugin = require('webpack-filter-warnings-plugin');
-// For production, use it instead of uglifyjsplugin
+// For production mode work, use it instead of uglifyjsplugin
 const TerserPlugin = require('terser-webpack-plugin'); //
 
 moudle.exports = () => {
@@ -103,6 +107,13 @@ moudle.exports = () => {
 }
 ```
 
+## Version Specific
+
+1. Upgrade the package to be compatible with **CRA**
+2. **Jest** and **Enzyme** is used for testing
+3. **copy** and **html** function is included to copy content and turn it into html
+4. substitutePrefix function was used to refactor app in the behind
+
 ## Example
 
 You may read [How to enable code syntax highlight in React App] if you want to use many code snippets inside your app or visit [react-marked-markdown][react-marked-markdown] for more information.
@@ -113,31 +124,46 @@ Every props used here is optional but it will be a starting point for your app. 
 // index.js
 import React from "react";
 import ReactDOM from "react-dom";
+import { MarkdownPreview, copy, html } from "./react-easy-md";
 
-import { MarkdownPreview } from "react-easy-md";
+// Refer to www.steadylearner.com/markdown page
+import example from "./example"; // use example instead not to be confused with jest tests
+import "./styles.css";
 
 function App() {
+  const website = "https://www.steadylearner.com";
   return (
     <section className="App">
       <MarkdownPreview
-        // Refer to www.steadylearner.com/markdown page
-        // value={test} // Comment it to show default value
+        // value={html(test)} // Comment it to show default value
+        value={example} // for we eallow sanitize false and allow html, it should show the same result
         markedOptions={{
-          langPrefix: "hljs ", // hljs prefix hljs relevant classes for styling
+          langPrefix: "hljs ", // hljs prefix for react-easy-md has its code part to used with it 
           sanitize: false, // allow html
-          breaks: true
+          breaks: true,
+          // baseUrl: "/s" This api is describe at "marked" webpage. 
+          // but it doesn't seem to be working with react-easy-md
+          // It wasn't included in original source code  
+          // and you can do the same with prefixWithReplacement
         }}
         prefixWithReplacement={[
-          ["s-", "https://www.steadlyearner.com"],
+          ["s-", `${website}`],
           ["l-", "https://www.linkedin.com/in"],
           ["y-", "https://www.youtube.com/channel/"],
           ["t-", "https://twitter.com/"],
+          ["compare-", `${website}/blog/read`],
           ["g-", "https://www.github.com"]
-        ]} // it can be plural or singular
+        ]} // it can be plural and not compatible wtih a baseURL API
       />
+      <button onClick={() => copy(example)} >Copy</button>
+      <span class="blue"> and paste it to <a href="www.steadylearner.com/markdown">www.steadylearner.com/markdown</a></span>
     </section>
   );
 }
+
+// window.location.href shows current location
+// Replace it with function used to get website location later? 
+// prefixWithReplacement={["s-", "https://www.steadlyearner.com"]}
 
 const rootElement = document.getElementById("root");
 ReactDOM.render(<App />, rootElement);
@@ -146,7 +172,7 @@ ReactDOM.render(<App />, rootElement);
 
 ## API
 
-1. You can refer to [react-marked-markdown][react-marked-markdown] first for this is just the improved version of it.
+1. You can refer to [react-marked-markdown][react-marked-markdown] first for this is just the improved version of it and [marked][marked] for main api here is from it.
 2. To understand **prefixWithReplacement** better, please visit [How to write less code for links in markdown with React][How to write less code for links in markdown with React].
 
 ### Usage of prefixWithReplacement
@@ -171,6 +197,9 @@ Then, Inside `MarkdownPreview` module it will convert
 [YouTube](y-/UCt_jsJOe91EVjd58kHpgTfw)
 [Twittter](t-/steadylearner_p)
 [Github](g-/steadylearner)
+
+<!-- You can use it wherever you use link -->
+<!-- [code]: s-/code "Steadylearner Code" -->
 ```
 
 equal to
@@ -183,14 +212,12 @@ equal to
 [Github](https://github.com/steadylearner)
 ```
 
-With `prefiexWithReplacement` from react-easy-md, **you don't have to type the entire paths anymore**. It helps you **not to repeat what you know they will do**.
+With `prefiexWithReplacement` from this package, **you don't have to type the entire paths anymore**. It helps you **not to repeat what you know they will do**.
 
 ## What is Next?
 
 1. More features **to help you write less markdown** with React
-2. Examples similar to [Steadylearner Markdown Editor Page][markdown] and other pages at [Steadylearner][Steadylearner]
-3. Update the package to use latest dependencies and test it with **Jest**
-4. **Tests and examples**
+2. **Tests and examples**
 
 ## Read More
 

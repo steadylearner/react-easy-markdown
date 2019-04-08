@@ -1,5 +1,3 @@
-// Maintain original code or extract these functions later
-
 function prefixWithReplacement(
   href = "https://www.steadylearner.com",
   prefixWithReplacement = ["s-", "https://"],
