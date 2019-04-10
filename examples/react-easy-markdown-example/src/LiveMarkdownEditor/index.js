@@ -221,7 +221,7 @@ class LiveMarkdownEdtior extends Component {
                             </a>
                         </span>
                         <span
-                            className="transition text-shadow-red-hover font-two-and-a-half cursor-pointer no-text-decoration margin-left-one"
+                            className="transition text-shadow-red-hover font-two-and-a-half cursor-pointer no-text-decoration margin-left-one margin-right-six"
                             onClick={() => this.toHTML()}
                             title="Click it or ⌨ Press shift+h to turn your content to HTML"
                         >
@@ -286,21 +286,65 @@ class LiveMarkdownEdtior extends Component {
                         </MarkdownPreviewCSS>
                 </section>
                 <footer className={`sub-navbar--about nav-height width-vw theme-black border-white center `} >
-			<span
-			    title={`This is link to /about`}
-                className="font-normal"
-			>
-			    <a
-                    href="https://www.steadylearner.com"
-                    title="This is to link to Steadylearner Website built with React and Rust."
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="no-text-decoration hover white transition"
-                >
-                    © Steadylearner 2018
-                </a>
-			</span>
-		</footer>
+                    <span
+                        title={`This is link to /about`}
+                        className="font-normal"
+                    >
+                        <a
+                            href="https://www.steadylearner.com"
+                            title="This is to link to Steadylearner Website built with React and Rust."
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="no-text-decoration hover white transition"
+                        >
+                            © Steadylearner
+                        </a>
+                        {/* <a
+                            href="https://www.youtube.com/channel/UCt_jsJOe91EVjd58kHpgTfw"
+                            className="
+                                no-text-decoration
+                                white
+                                hover margin-left-half
+                            "
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            title="steadylearner YouTube link"
+                        >
+                            <i className="fa fa-youtube" />
+                        </a>
+                        <a
+                            href="https://github.com/steadylearner"
+                            className="no-text-decoration white margin-left-half"
+                            title="steadylearner GitHub"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <i className="fab fa-github" />
+                        </a> */}
+                        <a
+                            href="https://www.linkedin.com/in/steady-learner-3151b7164/"
+                            className="no-text-decoration white hover margin-left-half"
+                            title="steadylearner LinkedIn"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <i className="fab fa-linkedin" />
+                        </a>
+                        <a
+                            href="https://twitter.com/steadylearner_p"
+                            className="
+                                no-text-decoration
+                                white
+                                hover margin-left-half
+                            "
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            title="Steadylearner Twitter"
+                        >
+                            <i className="fa fa-twitter" />
+                        </a>
+                    </span>
+                </footer>
             </ConverterCSS>
         )
     }
@@ -308,3 +352,6 @@ class LiveMarkdownEdtior extends Component {
 
 export default LiveMarkdownEdtior;
 
+
+			
+								
