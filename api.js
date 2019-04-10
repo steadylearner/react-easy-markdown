@@ -1,11 +1,4 @@
 import { lexer, parser } from "marked";
-import showdown from "showdown";
-
-function markdown(input = "") {
-    const converter = new showdown.Converter();
-    const result = converter.makeMarkdown(input);
-    return result;
-}
 
 function substitutePrefixes(
   href = "https://www.steadylearner.com",
@@ -23,14 +16,13 @@ function substitutePrefixes(
 }
 
 function html(input = "") {
-  const test = parser(lexer(input));
-  return test;
+  const HTML = parser(lexer(input));
+  return HTML;
 }
 
 function copy(value = "") { // copyToClipboardWithCode
   const textField = document.createElement("textarea");
-  const brRegex = /<br\s*?>/gi;
-  // const brRegex = /<br\s*[\/]?>/gi;
+  const brRegex = /<br\s*[\/]?>/gi;
 
   const leftHTMLrapperRegex = /&lt;/g;
   const rightHTMLWrapperRegex = /&gt;/g;
@@ -56,7 +48,9 @@ function copy(value = "") { // copyToClipboardWithCode
 
 export {
   html,
-  markdown,
   copy,
   substitutePrefixes,
 }
+
+
+

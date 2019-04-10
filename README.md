@@ -10,10 +10,12 @@
 
 [react-marked-markdown]: https://github.com/Vincent-P/react-marked-markdown
 [React Easy Markdown Github Repository]: https://github.com/steadylearner/react-easy-md
+[examples]: https://github.com/steadylearner/react-easy-md/tree/master/examples
 [Codesandbox for react-easy-md]: https://codesandbox.io/s/wz9pp1xpn8
 [How to enable code syntax highlight in React App]: https://medium.com/@steadylearner/how-to-enable-code-syntax-highlight-in-react-app-38463498fa6e
 [How to write less code for links in markdown with React]: https://www.steadylearner.com/blog/read/How-to-write-less-code-for-links-in-markdown-with-React
 [marked]: https://github.com/markedjs/marked
+
 
 <!-- \Shortcut -->
 
@@ -30,28 +32,30 @@
 
  [![npm version](https://badge.fury.io/js/react-easy-md.svg)](https://badge.fury.io/js/react-easy-md) [![npm](https://img.shields.io/npm/dt/react-easy-md.svg?maxAge=2592000)]()
 
-# React Easy Markdown
+# React Easy Markdown(react-easy-md)
 
-React components with JavaScript functions to help you write Markdown.
+It will help you to write Markdown with React easily.
 
 ---
 
-The code used here is mainly from [react-marked-markdown][react-marked-markdown].
+![react-easy-md-example](static/images/react-easy-md-example.png)
+
+The original code used here was from [react-marked-markdown][react-marked-markdown].
 
 But the differences are 
 
 1. It solved the problem of showing `null` title.
 2. `prefixAndReplacement` prop is included to help you write shortcuts for `<a>` inside markdown.
-3. The modules used here were written with **class** and I am thinking of turning them into functional components later.
-4. LiveMarkdownEditor is removed from the package to reduce package size and example code from [Markdown Editor Page][Markdown] at [Steadylearner][Steadylearner] will replace its role later. 
-5. You can use api such as copy(ToClipBoard) and html to turn your markdown to html 
+3. The modules used here became funtional compomnents.
+4. LiveMarkdownEditor is removed from the package to reduce package size and [example code][examples] from [Markdown Editor Page][Markdown] at [Steadylearner][Steadylearner] replace its role. 
+5. You can use **API** such as **copy(ToClipBoard)**, **html** and **makrdown**.
 
-To explain more about `1.`,You can define title in Markdown with  syntax such as
+To explain more about `1.`,You can define title in Markdown with  a code such as
 `[Website](https://www.steadylearner.com/ "Website")`.
 
 But having default value solves  the problem of showing **null**  title when users forget to define it or when you get data from the other websites that doesn't have title value with `<a>` tag.
 
-It will also be convenient to have default values to save your time and space in .md file when you write markdown.
+It will also be convenient to have default values to save your time and space in .md file.
 
 The original Github repository is archived so this package was made to share the code from the former repository with some improvements. 
 
@@ -59,14 +63,14 @@ The name of package became "react-easy-md" for the NPM Package didn't allow "rea
 
 (You may think that React Easy Mardkdown refer to `react-easy-md` in this documentation.)
 
-For [Steadylearner][Steadylearner] uses markdown intensively, it may include more features later with examples and tests.
+For [Steadylearner][Steadylearner] uses markdown intensively, it may include more features later.
 
 ## Install
 
 1. Type `$npm install --save react-easy-md` or `$yarn add react-easy-md` in your **CLI**
 2. Import component(s) you want
 ```js
-import { MarkdownPreviw, MarkdownInput } from 'react-easy-md';
+import { MarkdownPreviw, MarkdownInput, html, markdown, copy } from 'react-easy-md';
 ```
 
 3. If you use **webpack** and see some warnings and errors with this package, you may include
@@ -83,6 +87,16 @@ const TerserPlugin = require('terser-webpack-plugin'); //
 moudle.exports = () => {
   return({
     module: {
+
+      rules: [
+	 {// to exclude source map error from 3rd libraires.
+	  test: /\.(js|jsx)$/,
+          exclude: /node_modules/,
+	  use: ["source-map-loader"],
+	  enforce: "pre",
+	 },
+      ], 
+				
       
       node: {
 	    fs: "empty",
@@ -105,21 +119,22 @@ moudle.exports = () => {
     }
   })
 }
+
+// If you have problem with TypeScript .ts file,
+// you should find how to enable it in your webpack configuration
+// and contribute it to this respository.
 ```
 
 ## Version Specific
 
-1. Upgrade the package to be compatible with **CRA**
-2. **Jest** and **Enzyme** is used for testing
-3. **copy** and **html** function is included to copy content and turn it into html
-4. **defaultValue** for markdownPreview is ""
-5. substitutePrefix function was used to refactor it
+1. **react-easy-markdown-example** at [examples][examples] to help you test it locally.
+2. **markdown** function is included.
 
 ## Example
 
 You may read [How to enable code syntax highlight in React App] if you want to use many code snippets inside your app or visit [react-marked-markdown][react-marked-markdown] for more information.
 
-Every props used here is optional but it will be a starting point for your app. You can use **CSS files in example folder** at [React Easy Markdown Github Repository][React Easy Markdown Github Repository].
+Every props used here is optional but it will be a starting point for your app. You can use **CSS files in [examples folder][examples].
  
 ```js
 // index.js
@@ -136,16 +151,11 @@ function App() {
   return (
     <section className="App">
       <MarkdownPreview
-        // value={html(test)} // for we allow sanitize false and allow html, it should show the same result
         value={example} // default value is ""
         markedOptions={{
           langPrefix: "hljs ", // hljs prefix for react-easy-md has its code part to used with it 
           sanitize: false, // allow html
           breaks: true,
-          // baseUrl: "/s" This api is describe at "marked" webpage. 
-          // but it doesn't seem to be working with react-easy-md
-          // It wasn't included in original source code  
-          // and you can do the same with prefixWithReplacement
         }}
         prefixWithReplacement={[
           ["s-", `${website}`],
@@ -161,10 +171,6 @@ function App() {
     </section>
   );
 }
-
-// window.location.href shows current location
-// Replace it with function used to get website location later? 
-// prefixWithReplacement={["s-", "https://www.steadlyearner.com"]}
 
 const rootElement = document.getElementById("root");
 ReactDOM.render(<App />, rootElement);
@@ -202,7 +208,6 @@ Then, Inside `MarkdownPreview` module it will convert
 <!-- You can use it wherever you use link -->
 <!-- [code]: s-/code "Steadylearner Code" -->
 ```
-
 equal to
 
 ```md
@@ -215,10 +220,22 @@ equal to
 
 With `prefiexWithReplacement` from this package, **you don't have to type the entire paths anymore**. It helps you **not to repeat what you know they will do**.
 
+### html and markdown
+
+```js
+// This is just to show how it works
+import { html, markdown } from "react-easy-md";
+
+const package = "# react easy md";
+const HTML = html(package); // <h1 id="react-easy-md" >react easy md</h1>
+const react-easy-md = markdown(HTML) // "# react easy md"
+
+```
+
 ## What is Next?
 
-1. More features **to help you write less markdown** with React
-2. **Tests and examples**
+1. **Tests**, **examples** and the webpage.
+2. [Posts][Blog] to explain it at [Steadylearner][Steadylearner]
 
 ## Read More
 
@@ -233,8 +250,7 @@ With `prefiexWithReplacement` from this package, **you don't have to type the en
  2. [Markdown CheatSheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
  3. [Use mark down for Github page](https://help.github.com/articles/getting-started-with-writing-and-formatting-on-github/)
  4. [Learn Markdown in X Minutes](https://learnxinyminutes.com/docs/markdown)
- 5. [Example to make Github README.md File](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2)
- 6. [Steadylearner Markdown Live Editor][markdown]
- 7. [Markdown to html](https://markdowntohtml.com/)
- 8. [Markdown Interpreter](https://dillinger.io/)
+ 5. [Steadylearner Markdown Live Editor][markdown]
+ 6. [Markdown to html](https://markdowntohtml.com/)
+ 7. [Markdown Interpreter](https://dillinger.io/)
 
