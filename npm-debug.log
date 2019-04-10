@@ -1,0 +1,131 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node', '/usr/local/bin/npm', 'publish' ]
+2 info using npm@2.15.0
+3 info using node@v4.4.2
+4 verbose publish [ '.' ]
+5 silly cache add args [ '.', null ]
+6 verbose cache add spec .
+7 silly cache add parsed spec Result {
+7 silly cache add   raw: '.',
+7 silly cache add   scope: null,
+7 silly cache add   name: null,
+7 silly cache add   rawSpec: '.',
+7 silly cache add   spec: '/home/cesar/Desktop/Work/WebSite/Steadylearner/code/NPM/react-easy-md',
+7 silly cache add   type: 'directory' }
+8 verbose addLocalDirectory /home/cesar/.npm/react-easy-md/1.0.1-7/package.tgz not in flight; packing
+9 verbose correctMkdir /home/cesar/.npm correctMkdir not in flight; initializing
+10 verbose tar pack [ '/home/cesar/.npm/react-easy-md/1.0.1-7/package.tgz',
+10 verbose tar pack   '/home/cesar/Desktop/Work/WebSite/Steadylearner/code/NPM/react-easy-md' ]
+11 verbose tarball /home/cesar/.npm/react-easy-md/1.0.1-7/package.tgz
+12 verbose folder /home/cesar/Desktop/Work/WebSite/Steadylearner/code/NPM/react-easy-md
+13 info prepublish react-easy-md@1.0.1-7
+14 verbose addLocalTarball adding from inside cache /home/cesar/.npm/react-easy-md/1.0.1-7/package.tgz
+15 verbose correctMkdir /home/cesar/.npm correctMkdir not in flight; initializing
+16 silly cache afterAdd react-easy-md@1.0.1-7
+17 verbose afterAdd /home/cesar/.npm/react-easy-md/1.0.1-7/package/package.json not in flight; writing
+18 verbose correctMkdir /home/cesar/.npm correctMkdir not in flight; initializing
+19 verbose afterAdd /home/cesar/.npm/react-easy-md/1.0.1-7/package/package.json written
+20 silly publish { name: 'react-easy-md',
+20 silly publish   version: '1.0.1-7',
+20 silly publish   description: 'React marked-markdown improved without null title and with shortcuts for links.',
+20 silly publish   main: './lib/index.js',
+20 silly publish   devDependencies:
+20 silly publish    { '@babel/cli': '^7.2.3',
+20 silly publish      '@babel/core': '^7.4.0',
+20 silly publish      '@babel/plugin-proposal-class-properties': '^7.4.0',
+20 silly publish      '@babel/preset-env': '^7.4.2',
+20 silly publish      '@babel/preset-react': '^7.0.0',
+20 silly publish      'babel-jest': '^24.5.0',
+20 silly publish      enzyme: '^3.9.0',
+20 silly publish      'enzyme-adapter-react-16': '^1.11.2',
+20 silly publish      jest: '^24.5.0' },
+20 silly publish   scripts:
+20 silly publish    { test: 'jest',
+20 silly publish      build: 'babel src -d lib --ignore src/__tests__' },
+20 silly publish   dependencies:
+20 silly publish    { dompurify: '^1.0.10',
+20 silly publish      'highlight.js': '^9.15.6',
+20 silly publish      jsdom: '^14.0.0',
+20 silly publish      marked: '^0.6.2',
+20 silly publish      'prop-types': '^15.7.2',
+20 silly publish      react: '^16.8.6',
+20 silly publish      'react-dom': '^16.8.6',
+20 silly publish      showdown: '^1.9.0' },
+20 silly publish   repository:
+20 silly publish    { type: 'git',
+20 silly publish      url: 'git+https://github.com/steadylearner/react-easy-md.git' },
+20 silly publish   keywords:
+20 silly publish    [ 'React',
+20 silly publish      'markdown',
+20 silly publish      'jsx',
+20 silly publish      'javascript',
+20 silly publish      'How to write markdown with React',
+20 silly publish      'steadylearner',
+20 silly publish      'www.steadylearner.com' ],
+20 silly publish   author:
+20 silly publish    { name: 'www.steadylearner.com',
+20 silly publish      url: 'The original code from https://github.com/Vincent-P/react-marked-markdown' },
+20 silly publish   license: 'MIT',
+20 silly publish   readme: '<!-- What I have to do later -->\r\n<!--\r\n  1. Update outdated packages and write your own package.json\r\n  2. Organize folder structure to use Jest and Enzyme \r\n  3. Write some tests\r\n  4. Include real example from https://www.steadylearner.com/markdown\r\n-->\r\n\r\n<!-- Shortcut -->\r\n\r\n[react-marked-markdown]: https://github.com/Vincent-P/react-marked-markdown\r\n[React Easy Markdown Github Repository]: https://github.com/steadylearner/react-easy-md\r\n[examples]: https://github.com/steadylearner/react-easy-md/tree/master/examples\r\n[Codesandbox for react-easy-md]: https://codesandbox.io/s/wz9pp1xpn8\r\n[How to enable code syntax highlight in React App]: https://medium.com/@steadylearner/how-to-enable-code-syntax-highlight-in-react-app-38463498fa6e\r\n[How to write less code for links in markdown with React]: https://www.steadylearner.com/blog/read/How-to-write-less-code-for-links-in-markdown-with-React\r\n[marked]: https://github.com/markedjs/marked\r\n\r\n\r\n<!-- \\Shortcut -->\r\n\r\n<!-- Steadylearner -->\r\n\r\n[Steadylearner]: https://www.steadylearner.com/\r\n[Blog]: https://www.steadylearner.com/blog\r\n[Markdown]: https://www.steadylearner.com/markdown\r\n[prop-passer]: https://www.npmjs.com/package/prop-passer\r\n\r\n<!-- \\Steadylearner -->\r\n\r\n<!-- [![Travis branch](https://img.shields.io/travis/Steadylearner/react-easy-md/master.svg?maxAge=2592000)]() -->\r\n\r\n [![npm version](https://badge.fury.io/js/react-easy-md.svg)](https://badge.fury.io/js/react-easy-md) [![npm](https://img.shields.io/npm/dt/react-easy-md.svg?maxAge=2592000)]()\r\n\r\n# React Easy Markdown(react-easy-md)\r\n\r\nIt will help you to write Markdown with React easily.\r\n\r\n---\r\n\r\n[![react-easy-md-example](static/images/react-easy-md-example.png)](https://github.com/steadylearner/react-easy-md/tree/master/examples/react-easy-markdown-example)\r\n\r\nThe original code used here was from [react-marked-markdown][react-marked-markdown].\r\n\r\nBut the differences are \r\n\r\n1. It solved the problem of showing `null` title.\r\n2. `prefixAndReplacement` prop is included to help you write shortcuts for `<a>` inside markdown.\r\n3. The modules used here became funtional compomnents.\r\n4. LiveMarkdownEditor is removed from the package to reduce package size and [example code][examples] from [Markdown Editor Page][Markdown] at [Steadylearner][Steadylearner] replace its role. \r\n5. You can use **API** such as **copy(ToClipBoard)**, **html** and **makrdown**.\r\n\r\nTo explain more about `1.`,You can define title in Markdown with  a code such as\r\n`[Website](https://www.steadylearner.com/ "Website")`.\r\n\r\nBut having default value solves  the problem of showing **null**  title when users forget to define it or when you get data from the other websites that doesn\'t have title value with `<a>` tag.\r\n\r\nIt will also be convenient to have default values to save your time and space in .md file.\r\n\r\nThe original Github repository is archived so this package was made to share the code from the former repository with some improvements. \r\n\r\nThe name of package became "react-easy-md" for the NPM Package didn\'t allow "react-easy -markdown" for similarity.\r\n\r\n(You may think that React Easy Mardkdown refer to `react-easy-md` in this documentation.)\r\n\r\nFor [Steadylearner][Steadylearner] uses markdown intensively, it may include more features later.\r\n\r\n## Install\r\n\r\n1. Type `$npm install --save react-easy-md` or `$yarn add react-easy-md` in your **CLI**\r\n2. Import component(s) you want\r\n```js\r\nimport { MarkdownPreviw, MarkdownInput, html, markdown, copy } from \'react-easy-md\';\r\n```\r\n\r\n3. If you use **webpack** and see some warnings and errors with this package, you may include\r\n\r\n```js\r\n// Refer to webpack.config.js at\r\n// https://github.com/steadylearner/react-easy-md/blob/master/examples/config/webpack.config.js\r\n\r\n// Remove errors in developement\r\nconst FilterWarningsPlugin = require(\'webpack-filter-warnings-plugin\');\r\n// For production mode work, use it instead of uglifyjsplugin\r\nconst TerserPlugin = require(\'terser-webpack-plugin\'); //\r\n\r\nmoudle.exports = () => {\r\n  return({\r\n    module: {\r\n\r\n      rules: [\r\n\t {// to exclude source map error from 3rd libraires.\r\n\t  test: /\\.(js|jsx)$/,\r\n          exclude: /node_modules/,\r\n\t  use: ["source-map-loader"],\r\n\t  enforce: "pre",\r\n\t },\r\n      ], \r\n\t\t\t\t\r\n      \r\n      node: {\r\n\t    fs: "empty",\r\n\t    tls: "empty",\r\n\t    net: "empty",\r\n\t    child_process: "empty",\r\n      },\r\n \r\n      optimization: {\r\n        minimizer: [new TerserPlugin()],\r\n      },\r\n\r\n      // To remove warning from \'jsdom\' used inside react-easy-md \r\n      plugins: [\r\n        new FilterWarningsPlugin({\r\n\t      exclude: /Critical dependency: the request of a dependency is an expression/,\r\n\t}),\r\n      ],\r\n\r\n    }\r\n  })\r\n}\r\n\r\n// If you have problem with TypeScript .ts file,\r\n// you should find how to enable it in your webpack configuration\r\n// and contribute it to this respository.\r\n```\r\n\r\n## Version Specific\r\n\r\n1. **react-easy-markdown-example** at [examples][examples] to help you test it locally.\r\n2. **markdown** function is included.\r\n\r\n## Example\r\n\r\nYou may read [How to enable code syntax highlight in React App] if you want to use many code snippets inside your app or visit [react-marked-markdown][react-marked-markdown] for more information.\r\n\r\nEvery props used here is optional but it will be a starting point for your app. You can use **CSS files in [examples folder][examples].\r\n \r\n```js\r\n// index.js\r\nimport React from "react";\r\nimport ReactDOM from "react-dom";\r\nimport { MarkdownPreview, copy, html } from "./react-easy-md";\r\n\r\n// Refer to www.steadylearner.com/markdown page\r\nimport example from "./example"; // use example instead not to be confused with jest tests\r\nimport "./styles.css";\r\n\r\nfunction App() {\r\n  const website = "https://www.steadylearner.com";\r\n  return (\r\n    <section className="App">\r\n      <MarkdownPreview\r\n        value={example} // default value is ""\r\n        markedOptions={{\r\n          langPrefix: "hljs ", // hljs prefix for react-easy-md has its code part to used with it \r\n          sanitize: false, // allow html\r\n          breaks: true,\r\n        }}\r\n        prefixWithReplacement={[\r\n          ["s-", `${website}`],\r\n          ["l-", "https://www.linkedin.com/in"],\r\n          ["y-", "https://www.youtube.com/channel/"],\r\n          ["t-", "https://twitter.com/"],\r\n          ["compare-", `${website}/blog/read`],\r\n          ["g-", "https://www.github.com"]\r\n        ]} // it can be plural and not compatible wtih a baseURL API\r\n      />\r\n      <button onClick={() => copy(example)} >Copy</button>\r\n      <span class="blue"> and paste it to <a href="www.steadylearner.com/markdown">www.steadylearner.com/markdown</a></span>\r\n    </section>\r\n  );\r\n}\r\n\r\nconst rootElement = document.getElementById("root");\r\nReactDOM.render(<App />, rootElement);\r\n\r\n```\r\n\r\n## API\r\n\r\n1. You can refer to [react-marked-markdown][react-marked-markdown] first for this is just the improved version of it and [marked][marked] for main api here is from it.\r\n2. To understand **prefixWithReplacement** better, please visit [How to write less code for links in markdown with React][How to write less code for links in markdown with React].\r\n\r\n### Usage of prefixWithReplacement\r\n\r\nThe part of the code snippet from the example above\r\n```jsx\r\nprefixWithReplacement={[\r\n  ["s-", "https://www.steadlyearner.com"],\r\n  ["l-", "https://www.linkedin.com/in"],\r\n  ["y-", "https://www.youtube.com/channel/"],\r\n  ["t-", "https://twitter.com/"],\r\n  ["g-", "https://www.github.com"]\r\n]} \r\n```\r\n\r\nWe pass various **prefixes** with **its replacements** with data type **array of arrays**.\r\n\r\nThen, Inside `MarkdownPreview` module it will convert \r\n```md\r\n[Blog](s-/blog)\r\n[LinkedIn](l-/steady-learner-3151b7164)\r\n[YouTube](y-/UCt_jsJOe91EVjd58kHpgTfw)\r\n[Twittter](t-/steadylearner_p)\r\n[Github](g-/steadylearner)\r\n\r\n<!-- You can use it wherever you use link -->\r\n<!-- [code]: s-/code "Steadylearner Code" -->\r\n```\r\nequal to\r\n\r\n```md\r\n[Blog](https://www.steadylearner.com/blog)\r\n[LinkedIn](https://www.linkedin.com/in/steady-learner-3151b7164/)\r\n[YouTube](https://www.youtube.com/channel/UCt_jsJOe91EVjd58kHpgTfw)\r\n[Twittter](https://twitter.com/steadylearner_p)\r\n[Github](https://github.com/steadylearner)\r\n```\r\n\r\nWith `prefiexWithReplacement` from this package, **you don\'t have to type the entire paths anymore**. It helps you **not to repeat what you know they will do**.\r\n\r\n### html and markdown\r\n\r\n```js\r\n// This is just to show how it works\r\nimport { html, markdown } from "react-easy-md";\r\n\r\nconst package = "# react easy md";\r\nconst HTML = html(package); // <h1 id="react-easy-md" >react easy md</h1>\r\nconst react-easy-md = markdown(HTML) // "# react easy md"\r\n\r\n```\r\n\r\n## What is Next?\r\n\r\n1. **Tests**, **examples** and the webpage.\r\n2. [Posts][Blog] to explain it at [Steadylearner][Steadylearner]\r\n\r\n## Read More\r\n\r\n1. [Steadylearner Blog Posts for examples][blog]\r\n2. [prop-passer to help you write less prop and className][prop-passer]\r\n\r\n## Where to learn and use markdown?\r\n\r\n [Markdown-Tutorial]: https://www.markdowntutorial.com/\r\n\r\n 1. [Start with Markdown-Tutorial][Markdown-Tutorial]\r\n 2. [Markdown CheatSheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)\r\n 3. [Use mark down for Github page](https://help.github.com/articles/getting-started-with-writing-and-formatting-on-github/)\r\n 4. [Learn Markdown in X Minutes](https://learnxinyminutes.com/docs/markdown)\r\n 5. [Steadylearner Markdown Live Editor][markdown]\r\n 6. [Markdown to html](https://markdowntohtml.com/)\r\n 7. [Markdown Interpreter](https://dillinger.io/)\r\n\r\n',
+20 silly publish   readmeFilename: 'README.md',
+20 silly publish   gitHead: '16cdc64d8a1690de9db228db8ce9ec4625c8e2dd',
+20 silly publish   bugs: { url: 'https://github.com/steadylearner/react-easy-md/issues' },
+20 silly publish   homepage: 'https://github.com/steadylearner/react-easy-md#readme',
+20 silly publish   _id: 'react-easy-md@1.0.1-7',
+20 silly publish   _shasum: '9ced4c0943066718c69229a51578d212ba522210',
+20 silly publish   _from: '.' }
+21 verbose getPublishConfig undefined
+22 silly mapToRegistry name react-easy-md
+23 silly mapToRegistry using default registry
+24 silly mapToRegistry registry https://registry.npmjs.org/
+25 silly mapToRegistry data Result {
+25 silly mapToRegistry   raw: 'react-easy-md',
+25 silly mapToRegistry   scope: null,
+25 silly mapToRegistry   name: 'react-easy-md',
+25 silly mapToRegistry   rawSpec: '',
+25 silly mapToRegistry   spec: 'latest',
+25 silly mapToRegistry   type: 'tag' }
+26 silly mapToRegistry uri https://registry.npmjs.org/react-easy-md
+27 verbose publish registryBase https://registry.npmjs.org/
+28 silly publish uploading /home/cesar/.npm/react-easy-md/1.0.1-7/package.tgz
+29 verbose request uri https://registry.npmjs.org/react-easy-md
+30 verbose request sending authorization for write operation
+31 info attempt registry request try #1 at 7:38:04 PM
+32 verbose request using bearer token for auth
+33 verbose request id 8c72d2c63d6d1cc2
+34 http request PUT https://registry.npmjs.org/react-easy-md
+35 http 403 https://registry.npmjs.org/react-easy-md
+36 verbose headers { date: 'Wed, 10 Apr 2019 22:38:08 GMT',
+36 verbose headers   'content-type': 'application/json',
+36 verbose headers   'transfer-encoding': 'chunked',
+36 verbose headers   connection: 'keep-alive',
+36 verbose headers   'set-cookie': [ '__cfduid=d482f4b151eb48cabbf2fe45f17b64b3a1554935885; expires=Thu, 09-Apr-20 22:38:05 GMT; path=/; domain=.registry.npmjs.org; HttpOnly' ],
+36 verbose headers   'cf-ray': '4c583582ea27d012-GRU',
+36 verbose headers   'expect-ct': 'max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"',
+36 verbose headers   vary: 'Accept-Encoding',
+36 verbose headers   server: 'cloudflare',
+36 verbose headers   'content-encoding': 'gzip' }
+37 verbose request invalidating /home/cesar/.npm/registry.npmjs.org/react-easy-md on PUT
+38 error publish Failed PUT 403
+39 verbose stack Error: You cannot publish over the previously published versions: 1.0.1-7. : react-easy-md
+39 verbose stack     at makeError (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:264:12)
+39 verbose stack     at CachingRegistryClient.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:252:14)
+39 verbose stack     at /usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:178:7
+39 verbose stack     at Gunzip.onEnd (zlib.js:227:5)
+39 verbose stack     at emitNone (events.js:72:20)
+39 verbose stack     at Gunzip.emit (events.js:166:7)
+39 verbose stack     at endReadableNT (_stream_readable.js:913:12)
+39 verbose stack     at nextTickCallbackWith2Args (node.js:442:9)
+39 verbose stack     at process._tickCallback (node.js:356:17)
+40 verbose statusCode 403
+41 verbose pkgid react-easy-md
+42 verbose cwd /home/cesar/Desktop/Work/WebSite/Steadylearner/code/NPM/react-easy-md
+43 error Linux 4.15.0-47-generic
+44 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "publish"
+45 error node v4.4.2
+46 error npm  v2.15.0
+47 error code E403
+48 error You cannot publish over the previously published versions: 1.0.1-7. : react-easy-md
+49 error If you need help, you may report this error at:
+49 error     <https://github.com/npm/npm/issues>
+50 verbose exit [ 1, true ]
