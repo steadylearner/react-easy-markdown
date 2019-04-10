@@ -7,12 +7,20 @@ node_modules/
 # ignore examples
 examples/
 
+# ignore static file
+static/
+
+# ignore refernece
+reference/
+
+# ignore src file for production and use lib instead
+src/
+
 # ignore test files
 __tests__/
 
 # temporary javascript test file
 javascript/
 
-# src should be included to prepare script to work
 # https://docs.npmjs.com/misc/scripts
 # You don't have to manually build this with this script

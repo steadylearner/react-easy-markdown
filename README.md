@@ -38,7 +38,7 @@ It will help you to write Markdown with React easily.
 
 ---
 
-![react-easy-md-example](static/images/react-easy-md-example.png)
+[![react-easy-md-example](static/images/react-easy-md-example.png)](https://github.com/steadylearner/react-easy-md/tree/master/examples/react-easy-markdown-example)
 
 The original code used here was from [react-marked-markdown][react-marked-markdown].
 
