@@ -1,6 +1,6 @@
 {
   "name": "react-easy-md",
-  "version": "1.0.1-7",
+  "version": "1.0.1-8",
   "description": "React marked-markdown improved without null title and with shortcuts for links.",
   "main": "./lib/index.js",
   "devDependencies": {
