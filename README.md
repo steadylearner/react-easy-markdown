@@ -16,7 +16,6 @@
 [How to write less code for links in markdown with React]: https://www.steadylearner.com/blog/read/How-to-write-less-code-for-links-in-markdown-with-React
 [marked]: https://github.com/markedjs/marked
 
-
 <!-- \Shortcut -->
 
 <!-- Steadylearner -->
@@ -37,6 +36,8 @@
 It will help you to write Markdown with React easily.
 
 ---
+
+<!-- It turns it to absolute path at NPM -->
 
 [![react-easy-md-example](static/images/react-easy-md-example.png)](https://github.com/steadylearner/react-easy-md/tree/master/examples/react-easy-markdown-example)
 

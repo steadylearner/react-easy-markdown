@@ -2,7 +2,7 @@
 node_modules/
 
 # result file from src
-dist/
+lib/
 
 
 

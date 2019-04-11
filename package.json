@@ -12,7 +12,9 @@
     "babel-jest": "^24.5.0",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.11.2",
-    "jest": "^24.5.0"
+    "jest": "^24.5.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
   },
   "scripts": {
     "test": "jest",
@@ -24,9 +26,10 @@
     "jsdom": "^14.0.0",
     "marked": "^0.6.2",
     "prop-types": "^15.7.2",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
     "showdown": "^1.9.0"
+  },
+  "peerDependencies": {
+    "react": "^16.0.0"
   },
   "repository": {
     "type": "git",
@@ -36,10 +39,14 @@
     "React",
     "markdown",
     "jsx",
-    "javascript",
+    "JavaScript",
     "How to write markdown with React",
-    "steadylearner",
-    "www.steadylearner.com"
+    "Steadylearner",
+    "www.steadylearner.com",
+    "HTML",
+    "Steadylearner Blog",
+    "markdown to HTML",
+    "HTML to markdown"
   ],
   "author": "www.steadylearner.com(The original code from https://github.com/Vincent-P/react-marked-markdown)",
   "license": "MIT"
