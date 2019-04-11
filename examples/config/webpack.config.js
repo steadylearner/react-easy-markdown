@@ -49,6 +49,7 @@ module.exports = () => {
 	// console.log("Env ", env);
 
 	return ({
+		devtool: 'inline-source-map',
 		module: {
 
 			// https://webpack.js.org/configuration/module/#condition exclude unecessary files
@@ -68,10 +69,16 @@ module.exports = () => {
 				{   // https://github.com/aws-amplify/amplify-js/issues/433
 					// to remove source map error from 3rd libraires such as rxjs from the console.
 					test: /\.(js|jsx)$/,
-					exclude: /node_modules/,
+					// exclude: /node_modules/,
 					use: ["source-map-loader"],
 					enforce: "pre",
 				},
+				// https://webpack.js.org/guides/typescript/
+				// {
+				// 	test: /\.tsx?$/,
+				// 	use: 'ts-loader',
+				// 	exclude: /node_modules/
+				// },
 				{
 					test: /\.html$/,
 					use: [
@@ -195,7 +202,9 @@ module.exports = () => {
 			alias: {
 				"react-dom": "react-dom/profiling",
 				"scheduler/tracing": "scheduler/tracing-profiling",
-			}
+			},
+			//
+			// extensions: [ '.tsx', '.ts', '.js' ]
 		},
 
 		plugins: [
@@ -273,6 +282,5 @@ module.exports = () => {
 		],
 	});
 };
-
 
 

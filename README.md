@@ -48,7 +48,7 @@ But the differences are
 1. It solved the problem of showing `null` title.
 2. `prefixAndReplacement` prop is included to help you write shortcuts for `<a>` inside markdown.
 3. The modules used here became funtional compomnents.
-4. LiveMarkdownEditor is removed from the package to reduce package size and [example code][examples] from [Markdown Editor Page][Markdown] at [Steadylearner][Steadylearner] replace its role. 
+4. LiveMarkdownEditor is removed from the package to reduce package size and refer to [example code][examples] from [Markdown Editor Page][Markdown] at [Steadylearner][Steadylearner] instead if you want a working example. 
 5. You can use **API** such as **copy(ToClipBoard)**, **html** and **makrdown**.
 
 To explain more about `1.`, You can define title in Markdown with a code such as
@@ -90,7 +90,7 @@ moudle.exports = () => {
     module: {
 
       rules: [
-	 {// to exclude source map error from 3rd libraires.
+	 {// to exclude source map error from third part libraires.
 	  test: /\.(js|jsx)$/,
           exclude: /node_modules/,
 	  use: ["source-map-loader"],
@@ -123,7 +123,7 @@ moudle.exports = () => {
 
 // If you have problem with TypeScript .ts file,
 // you should find how to enable it in your webpack configuration
-// and contribute it to this respository.
+// and would contribute the file to this respository.
 ```
 
 ## Version Specific
@@ -135,7 +135,7 @@ moudle.exports = () => {
 
 You may read [How to enable code syntax highlight in React App] if you want to use many code snippets inside your app or visit [react-marked-markdown][react-marked-markdown] for more information.
 
-Every props used here is optional but it will be a starting point for your app. You can use **CSS files in [examples folder][examples].
+Every props used here is optional but it will be a starting point for your app. You can use **CSS** files in [examples folder][examples].
  
 ```js
 // index.js
