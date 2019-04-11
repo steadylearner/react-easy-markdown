@@ -51,10 +51,10 @@ But the differences are
 4. LiveMarkdownEditor is removed from the package to reduce package size and [example code][examples] from [Markdown Editor Page][Markdown] at [Steadylearner][Steadylearner] replace its role. 
 5. You can use **API** such as **copy(ToClipBoard)**, **html** and **makrdown**.
 
-To explain more about `1.`,You can define title in Markdown with  a code such as
+To explain more about `1.`, You can define title in Markdown with a code such as
 `[Website](https://www.steadylearner.com/ "Website")`.
 
-But having default value solves  the problem of showing **null**  title when users forget to define it or when you get data from the other websites that doesn't have title value with `<a>` tag.
+But having default value solves the problem of showing **null** title when users forget to define it or when you get data from the other websites that doesn't have title value with `<a>` tag.
 
 It will also be convenient to have default values to save your time and space in .md file.
 
@@ -141,40 +141,46 @@ Every props used here is optional but it will be a starting point for your app. 
 // index.js
 import React from "react";
 import ReactDOM from "react-dom";
-import { MarkdownPreview, copy, html } from "./react-easy-md";
+import { MarkdownPreview, copy, html, markdown } from "react-easy-md";
 
 // Refer to www.steadylearner.com/markdown page
 import example from "./example"; // use example instead not to be confused with jest tests
 import "./styles.css";
 
 function App() {
+  // console.log(html(test)); // or use {markdown(html(test)) }
   const website = "https://www.steadylearner.com";
   return (
     <section className="App">
       <MarkdownPreview
-        value={example} // default value is ""
+        value={html(example)} // for we eallow sanitize false and allow html, it should show the same result
+        // value={markdown(html(example))}
         markedOptions={{
           langPrefix: "hljs ", // hljs prefix for react-easy-md has its code part to used with it 
           sanitize: false, // allow html
           breaks: true,
         }}
         prefixWithReplacement={[
+          // use absolute path to title attribute work well
           ["s-", `${website}`],
           ["l-", "https://www.linkedin.com/in"],
           ["y-", "https://www.youtube.com/channel/"],
           ["t-", "https://twitter.com/"],
           ["compare-", `${website}/blog/read`],
           ["g-", "https://www.github.com"]
-        ]} // it can be plural and not compatible wtih a baseURL API
+        ]} // You can define multiple shortcuts for links in markdown
       />
-      <button onClick={() => copy(example)} >Copy</button>
-      <span class="blue"> and paste it to <a href="www.steadylearner.com/markdown">www.steadylearner.com/markdown</a></span>
+      <button onClick={() => copy(html(example))} >Copy</button>
+      {/* <br /> */}
+      <span className="blue"> and paste it to <a href="www.steadylearner.com/markdown">www.steadylearner.com/markdown</a></span>
+      {/* <section>{html(example)}</section> */}
     </section>
   );
 }
 
 const rootElement = document.getElementById("root");
 ReactDOM.render(<App />, rootElement);
+
 
 ```
 
