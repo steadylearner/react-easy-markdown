@@ -257,6 +257,7 @@ const react-easy-md = markdown(HTML) // "# react easy md"
 ```js
 import React, { Component } from "react";
 import { readLocalFileWithHow, saveTextFromWeb } from "react-easy-md";
+
 class ReactEasyMarkdown extends Component {
 
   constructor(props) {
@@ -273,6 +274,7 @@ class ReactEasyMarkdown extends Component {
   }
 
   render() {
+    const { value } = this.state;
     return <span onClick={() => saveTextFromWeb(value)} >
   }
 }
