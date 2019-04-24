@@ -127,7 +127,7 @@ moudle.exports = () => {
 }
 
 // You should refer to TypeScript documentation
-// if you had problem  with it.
+// if you had problem with it.
 ```
 
 ## Version Specific
