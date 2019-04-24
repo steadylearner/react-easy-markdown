@@ -13,10 +13,10 @@ function substitutePrefixes(
     ["s-", "https://"],
   ],
 ) {
-  const isHrefeIncludeAnyPrefix = prefixesWithReplacements.filter(x => href.startsWith(x[0]));
+  const isHrefIncludeAnyPrefix = prefixesWithReplacements.filter(x => href.startsWith(x[0]));
 
-  if(isHrefeIncludeAnyPrefix.length === 1) { // === i instead of > 0 to be more precise
-    return `${isHrefeIncludeAnyPrefix[0][1]}${href.split(isHrefeIncludeAnyPrefix[0][0])[1]}`
+  if(isHrefIncludeAnyPrefix.length === 1) { // === i instead of > 0 to be more precise
+    return `${isHrefIncludeAnyPrefix[0][1]}${href.split(isHrefIncludeAnyPrefix[0][0])[1]}`
   } else {
     return href;
   }
@@ -54,9 +54,77 @@ function copy(value = "") { // copyToClipboardWithCode
   textField.remove();
 }
 
+// Use your own function to what to do with the contents of local file
+function readLocalFileWithHow(e = {}, fn = {}) { // (How -> How to use it)
+  let file = e.target.files[0];
+
+  if (!file) {
+    return;
+  }
+
+  if (fn === {}) {
+    return;
+  }
+
+  let reader = new FileReader();
+  reader.onload = (e) => {
+      let contents = e.target.result;
+      fn(contents);
+  };
+  reader.readAsText(file);
+}
+
+// inside class
+// readLocalFile(e) {
+//     let file = e.target.files[0];
+
+//     if (!file) {
+//         return;
+//     }
+
+//     let reader = new FileReader();
+//     reader.onload = (e) => {
+//         let contents = e.target.result;
+//         this.setState({
+//             value: contents,
+//         });
+//     };
+//     reader.readAsText(file);
+// }
+
+// Pass text value to save file and name if you want. 
+// For example, saveTextFromWeb("This is from your markdown editor.", "README.md")
+function saveTextFromWeb(text = "", name = "post.md", type = "text/plain") 
+{
+    let textToBlob = new Blob([text], {type});
+    let blobURL = window.URL.createObjectURL(textToBlob);
+    let fileName = name;
+
+    let fileLink = document.createElement("a");
+
+    fileLink.download = fileName;
+    fileLink.innerHTML = "Save File from Web";
+    fileLink.href = blobURL;
+    fileLink.onclick = destroyClickedElement;
+    fileLink.style.display = "none";
+    document.body.appendChild(fileLink);
+
+    fileLink.click();
+}
+
+function destroyClickedElement(event)
+{
+    document.body.removeChild(event.target);
+}
+
 export {
   html,
   markdown,
+  
+  // Simple helper functions that you may need when you deal with markdown
+  // Refer to www.steadylearner.com/markdown 
   copy,
   substitutePrefixes,
+  readLocalFileWithHow,
+  saveTextFromWeb,
 }

@@ -1,11 +1,11 @@
-// equivalent to substituePrefix API for this package
+// equivalent to testing substituePrefix API for this package
 
 const {
   prefixWithReplacement,
   prefixesWithReplacements,
 } = require("../../../javascript/prefixWithReplacement");
 
-// 1. Test the base function for our package.
+// 1. Test the base function for our package. equivalent to 
 describe('Test prefixWithReplacement when href include prefix given and vice versa', () => {
   const prefixWithReplacementExample = ["s-", "https://"];
   test("When href don't have the prefix in it, the test should return the original value.", () => {
