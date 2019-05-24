@@ -15,7 +15,7 @@ function MarkdownPreview({
   markedOptions,
   value,
   className,
-  prefixWithReplacement,
+  set,
   titleMessage,
 }) {
 
@@ -55,7 +55,7 @@ function MarkdownPreview({
   // Remove null title problem when it is undefined by giving default value
   // and you can define shortcuts for <a> in markdown
   renderer.link = (href, title, text) => {
-    const lastHref = substitutePrefixes(href, prefixWithReplacement);
+    const lastHref = substitutePrefixes(href, set);
 
     return `<a target="_blank" rel="noopener noreferrer" href="${lastHref}" title="${
       title === null ? `${titleMessage} ${lastHref}` : title
@@ -73,13 +73,13 @@ MarkdownPreview.propTypes = {
   value: PropTypes.string,
   className: PropTypes.string,
   markedOptions: PropTypes.object,
-  prefixWithReplacement: PropTypes.array,
+  set: PropTypes.array,
   titleMessage: PropTypes.string
 };
 
 MarkdownPreview.defaultProps = {
   value: "", // "**This is default value. Write Your own markdown**",
-  prefixWithReplacement: [["s-", "https://"]],
+  set: [["s-", "https://"]],
   titleMessage: "Click it will open a new tab at"
 };
 

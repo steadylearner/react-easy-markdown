@@ -7,13 +7,16 @@ function markdown(input = "") {
     return result;
 }
 
+//
+
+// when render with React for each link inside MarkdownPreview.js
 function substitutePrefixes(
   href = "https://www.steadylearner.com",
-  prefixesWithReplacements = [
+  set = [
     ["s-", "https://"],
   ],
 ) {
-  const isHrefIncludeAnyPrefix = prefixesWithReplacements.filter(x => href.startsWith(x[0]));
+  const isHrefIncludeAnyPrefix = set.filter(x => href.startsWith(x[0]));
 
   if(isHrefIncludeAnyPrefix.length === 1) { // === i instead of > 0 to be more precise
     return `${isHrefIncludeAnyPrefix[0][1]}${href.split(isHrefIncludeAnyPrefix[0][0])[1]}`
@@ -21,6 +24,20 @@ function substitutePrefixes(
     return href;
   }
 }
+
+// Test it and verify that it need exact match or others
+// Use it for .md files made with this package.
+const substituteWithRegex = (set = [["s-", "http://"]]) => (draft = "") => {
+  let text = draft;
+  set.forEach(value => {
+    // Build regexp for each value of set here
+    const setRegex = new RegExp(value[0], 'g');
+    text = text.replace(setRegex, value[1])
+  });
+  return text;
+};
+
+//
 
 function html(input = "") {
   const test = parser(lexer(input));
@@ -54,47 +71,9 @@ function copy(value = "") { // copyToClipboardWithCode
   textField.remove();
 }
 
-// Use your own function to what to do with the contents of local file
-function readLocalFileWithHow(e = {}, fn = {}) { // (How -> How to use it)
-  let file = e.target.files[0];
-
-  if (!file) {
-    return;
-  }
-
-  if (fn === {}) {
-    return;
-  }
-
-  let reader = new FileReader();
-  reader.onload = (e) => {
-      let contents = e.target.result;
-      fn(contents);
-  };
-  reader.readAsText(file);
-}
-
-// inside class
-// readLocalFile(e) {
-//     let file = e.target.files[0];
-
-//     if (!file) {
-//         return;
-//     }
-
-//     let reader = new FileReader();
-//     reader.onload = (e) => {
-//         let contents = e.target.result;
-//         this.setState({
-//             value: contents,
-//         });
-//     };
-//     reader.readAsText(file);
-// }
-
-// Pass text value to save file and name if you want. 
+// Pass text value to save file and name if you want.
 // For example, saveTextFromWeb("This is from your markdown editor.", "README.md")
-function saveTextFromWeb(text = "", name = "post.md", type = "text/plain") 
+function saveTextFromWeb(text = "", name = "post.md", type = "text/plain")
 {
     let textToBlob = new Blob([text], {type});
     let blobURL = window.URL.createObjectURL(textToBlob);
@@ -117,14 +96,52 @@ function destroyClickedElement(event)
     document.body.removeChild(event.target);
 }
 
+// Use your own function to what to do with the contents of local file
+function readLocalFileWithHow(e = {}, fn = {}) { // (How -> How to use it)
+  let file = e.target.files[0];
+
+  if (!file) {
+    return;
+  }
+
+  if (fn === {}) {
+    return;
+  }
+
+  let reader = new FileReader();
+  reader.onload = (e) => {
+    let contents = e.target.result;
+    fn(contents);
+  };
+  reader.readAsText(file);
+}
+
+// inside class
+// readLocalFile(e) {
+//     let file = e.target.files[0];
+
+//     if (!file) {
+//         return;
+//     }
+
+//     let reader = new FileReader();
+//     reader.onload = (e) => {
+//         let contents = e.target.result;
+//         this.setState({
+//             value: contents,
+//         });
+//     };
+//     reader.readAsText(file);
+// }
+
 export {
   html,
   markdown,
-  
   // Simple helper functions that you may need when you deal with markdown
-  // Refer to www.steadylearner.com/markdown 
+  // Refer to www.steadylearner.com/markdown
   copy,
   substitutePrefixes,
+  substituteWithRegex,
   readLocalFileWithHow,
   saveTextFromWeb,
 }
