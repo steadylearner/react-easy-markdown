@@ -27,7 +27,8 @@ function substitutePrefixes(
 
 // Test it and verify that it need exact match or others
 // Use it for .md files made with this package.
-const substituteWithRegex = (set = [["s-", "http://"]]) => (draft = "") => {
+// substituteWithRegex
+const substitute = (set = [["s-", "http://"]]) => (draft = "") => {
   let text = draft;
   set.forEach(value => {
     // Build regexp for each value of set here
@@ -37,6 +38,16 @@ const substituteWithRegex = (set = [["s-", "http://"]]) => (draft = "") => {
   return text;
 };
 
+// unsubstitutewithRegex
+const unsubstitute = (set = [["s-", "http://"]]) => (draft = "") => {
+  let text = draft;
+  set.forEach(value => {
+    // Build regexp for each value of set here
+    const setRegex = new RegExp(value[1], 'g');
+    text = text.replace(setRegex, value[0])
+  });
+  return text;
+};
 //
 
 function html(input = "") {
