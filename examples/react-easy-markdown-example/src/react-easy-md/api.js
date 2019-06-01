@@ -35,6 +35,7 @@ function substitutePrefixes(
 // Test it and verify that it need exact match or others
 // Use it for .md files made with this package.
 // substituteWithRegex
+// I lost original code for them and I don't want to complicate this package any more.
 
 // const substitute = (set = [["s-", "https://"]]) => (draft = "") => {
 //   let text = draft;
@@ -128,7 +129,7 @@ function readLocalFileWithHow(e = {}, fn = {}) { // (How -> How to use it)
 
 // Pass text value to save file and name if you want.
 // For example, saveTextFromWeb("This is from your markdown editor.", "README.md")
-function saveTextFromWeb(text = "", name = "post.md", type = "text/plain")
+function saveTextFromWeb(text = "", name = "README.md", type = "text/plain")
 {
     let textToBlob = new Blob([text], {type});
     let blobURL = window.URL.createObjectURL(textToBlob);

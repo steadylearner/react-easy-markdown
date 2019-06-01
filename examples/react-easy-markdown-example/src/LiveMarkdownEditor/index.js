@@ -4,6 +4,9 @@ import { Prop } from "prop-passer";
 import { debounce } from "lodash";
 // import { debounce } from "lodash/fp";
 
+import emoji from "node-emoji";
+import hasEmoji from "has-emoji";
+
 import {
     MarkdownInput,
     MarkdownPreview,
@@ -33,7 +36,8 @@ class LiveMarkdownEdtior extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			value: "",
+            value: "",
+            title: "README.md",
 			copySuccess: "Copy",
 			allowCode: true,
             // exampleShow: false,
@@ -157,7 +161,7 @@ class LiveMarkdownEdtior extends Component {
 	}
 
     render() {
-        const { value, copySuccess, allowCode } = this.state;
+        const { value, title, copySuccess, allowCode } = this.state;
         const isThereDraft = loadStateFromLocalStorage("markdown");
 
         const set = [
@@ -168,6 +172,11 @@ class LiveMarkdownEdtior extends Component {
             ["t-", "https://twitter.com/steadylearner_p"],
             ["g-", "https://www.github.com"],
         ];
+        
+        const valueWithEmoji = emoji.emojify(value);
+
+        const includeEmoji = hasEmoji(valueWithEmoji);
+        const afterEmoji = includeEmoji ? valueWithEmoji : value;
 
         return (
             <ConverterCSS>
@@ -197,7 +206,7 @@ class LiveMarkdownEdtior extends Component {
                         <span
                             className="no-text-decoration margin-left-one"
                             title="Click this to save your draft."
-                            onClick={() => saveTextFromWeb(value)}
+                            onClick={() => saveTextFromWeb(value, title)}
                         >
                             <i
                                 className={`fas fa-file`}
@@ -283,7 +292,7 @@ class LiveMarkdownEdtior extends Component {
                         />
                         <MarkdownPreviewCSS>
                             <MarkdownPreview
-                                value={value}
+                                value={afterEmoji} // I love :heart: ❤️ works
                                 markedOptions={{
                                     langPrefix: "hljs ", // hljs prefix hljs relevant classes for styling
                                     // sanitize: false, // allow html
