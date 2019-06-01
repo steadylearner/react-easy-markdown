@@ -91,10 +91,67 @@ import {
 2. It will be the last main update for it.
 3. **set** will be used instead of prefixWithReplacement
 
+## Example
+
+```js
+// index.js
+import React from "react";
+import ReactDOM from "react-dom";
+import { MarkdownPreview, copy } from "react-easy-md";
+
+const example = "## React Easy Markdown"
+
+function App() {
+  return (
+    <section className="App">
+      <MarkdownPreview
+        value={markdown(html(example))}
+        markedOptions={{
+          langPrefix: "hljs ", // 1.
+          sanitize: false, // // 2.
+          breaks: true, // 3.
+        }}
+        set={[
+          ["s-", "https://www.steadylearner.com"],
+          ["l-", "https://www.linkedin.com/in"],
+          ["y-", "https://www.youtube.com/channel/"],
+          ["t-", "https://twitter.com/"],
+          ["g-", "https://www.github.com"],
+        ]} // 4.
+      />
+      <button onClick={() => copy(example)} >Copy</button>
+    </section>
+  );
+}
+
+const rootElement = document.getElementById("root");
+ReactDOM.render(<App />, rootElement);
+```
+
+You can Refer to www.steadylearner.com/markdown page for live example.
+
+The important points here are
+
+1. hljs prefix to style code blocks.
+
+2. false to allow html
+
+3. You can use [enter] instead of \n
+
+4. You can define shortcut for links with **set** prop
+
+For code syntax highlight process in **1.**, you may read [How to enable code syntax highlight in React App].
+
+Then, Include link below in your index.html.
+
+```html
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/foundation.min.css" />
+```
+
 ## API
 
 1. You can refer to documentations from [react-marked-markdown] and [marked] first.
-2. **set** is used to define shortcuts for links.
+2. Main API is **MarkdownPreview** and **set** is used to define shortcuts for links.
 
 ### Usage of set
 
@@ -192,63 +249,6 @@ The important parts here are
 1. **e** and **value** is mandatory for `readLocalFileWithHow`.(Then, You can define function for how to use it)
 2. You just need to pass **data** you want to save in your machine for saveTextFromWeb.
 
-## Example
-
-```js
-// index.js
-import React from "react";
-import ReactDOM from "react-dom";
-import { MarkdownPreview, copy } from "react-easy-md";
-
-const example = "## React Easy Markdown"
-
-function App() {
-  return (
-    <section className="App">
-      <MarkdownPreview
-        value={markdown(html(example))}
-        markedOptions={{
-          langPrefix: "hljs ", // 1.
-          sanitize: false, // // 2.
-          breaks: true, // 3.
-        }}
-        set={[
-          ["s-", "https://www.steadylearner.com"],
-          ["l-", "https://www.linkedin.com/in"],
-          ["y-", "https://www.youtube.com/channel/"],
-          ["t-", "https://twitter.com/"],
-          ["g-", "https://www.github.com"],
-        ]} // 4.
-      />
-      <button onClick={() => copy(example)} >Copy</button>
-    </section>
-  );
-}
-
-const rootElement = document.getElementById("root");
-ReactDOM.render(<App />, rootElement);
-```
-
-You can Refer to www.steadylearner.com/markdown page for live example.
-
-The important points here are
-
-1. hljs prefix to style code blocks.
-
-2. false to allow html
-
-3. You can use [enter] instead of \n
-
-4. You can define shortcut for links with **set** prop
-
-For code syntax highlight process in **1.**, you may read [How to enable code syntax highlight in React App].
-
-Then, Include link below in your index.html.
-
-```html
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/foundation.min.css" />
-```
-
 ## Problem with Webpack?
 
 If you see some warnings and errors with this package while you use webpack, you may include
@@ -300,11 +300,11 @@ moudle.exports = () => {
 
 ```
 
-It is mainly to remove warnigns from the upgrade package written in TypeScript.
+It is mainly to remove warnigns from the package written in TypeScript.
 
 You won't need them if you use CRA.
 
-(This package upgraded dependencies from [react-marked-markdown] and one of new dependency use TpyeScript and it makes dependency problems. So you have to enable TypeScript for your bundler.
+(This package upgraded dependencies from [react-marked-markdown] and one of new dependency use TypeScript and it makes dependency problems. So you have to enable it for your bundler.
 )
 
 ## What is Next?
