@@ -31,15 +31,6 @@ const ConverterCSS = styled.section`
         color: "#6786fb";
     }
 
-    .md-file-input {
-        opacity: 0;
-        width: 0.1px;
-        height: 0.1px;
-        overflow: hidden;
-        position: absolute;
-        z-index: -1;
-    }
-
     .converter-container {
 
         height: calc(100vh - 11rem);

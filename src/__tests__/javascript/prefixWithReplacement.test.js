@@ -1,4 +1,4 @@
-// equivalent to testing substituePrefix API for this package
+// equivalent to testing substituePrefix with set API for this package
 
 const {
   prefixWithReplacement,

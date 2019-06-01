@@ -1,5 +1,30 @@
-import MarkdownPreview from "./MarkdownPreview";
 import MarkdownInput from "./MarkdownInput";
-import { html, copy, substitutePrefixes, markdown } from "./api";
+import MarkdownPreview from "./MarkdownPreview";
 
-export { MarkdownInput, MarkdownPreview, html, copy, substitutePrefixes, markdown };
+import {
+    html,
+    markdown,
+    copy,
+    readLocalFileWithHow,
+    saveTextFromWeb,
+    substitutePrefixes,
+    // substitute,
+    // unsubstitute,
+} from "./api";
+
+export {
+    MarkdownInput,
+    MarkdownPreview,
+    //
+    html,
+    markdown,
+    //
+    copy,
+    readLocalFileWithHow,
+    saveTextFromWeb,
+    //
+    substitutePrefixes,
+    //
+    // substitute,
+    // unsubstitute,
+};

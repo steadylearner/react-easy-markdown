@@ -10,7 +10,6 @@ const LiveMarkdownEditorCSS = styled.section`
     margin: 0;
 
     ${ContentCSS}
-
 `;
 
 export default props => <LiveMarkdownEditorCSS {...props} />;

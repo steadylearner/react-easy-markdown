@@ -10,15 +10,13 @@ import {
     html,
     markdown,
     copy,
-    readLocalFileWithHow,
-    saveTextFromWeb,
-} from "../react-easy-md";
+} from "../../react-easy-md";
 import {
     saveStateToLocalStorage,
     loadStateFromLocalStorage
-} from "../store/localStorage";
+} from "../../store/localStorage";
 
-import example from "../example";
+import example from "../../example";
 
 import ConverterCSS from "./CSS/ConverterCSS";
 import MarkdownPreviewCSS from "./CSS/MarkdownPreviewCSS";
@@ -27,7 +25,6 @@ const ClassProp = Prop({
     className: "hover transition cursor-pointer"
 });
 
-// I want to separate data and its methods later.
 class LiveMarkdownEdtior extends Component {
 
 	constructor(props) {
@@ -46,14 +43,6 @@ class LiveMarkdownEdtior extends Component {
             'maxWait': 60000,
         });
         // this.saveDraft = debounce(5000)(this.saveDraft);
-    }
-
-    readLocalFile(e) {
-        readLocalFileWithHow(e, (value) => {
-            this.setState({
-                value,
-            })
-        })
     }
 
     showExample() {
@@ -95,6 +84,14 @@ class LiveMarkdownEdtior extends Component {
             })
         }
     } // c
+
+    setCodeUsability(e) {
+		e.preventDefault();
+		const { allowCode } = this.state;
+		this.setState({
+			allowCode: !allowCode,
+		});
+	}
 
     toHTML() {
         const { value } = this.state;
@@ -181,27 +178,28 @@ class LiveMarkdownEdtior extends Component {
                 >
                     <ClassProp>
                         <span
-                            className="no-text-decoration margin-left-two  "
-                            title="Click it to load local .md file"
+                            className="no-text-decoration margin-left-two"
+                            onClick={e => this.setCodeUsability(e)}
                         >
-                            <input
-                                className="md-file-input"
-                                type="file"
-                                id="md-file-input"
-                                name="md-file-input"
-                                accept=".md"
-                                onClick={(e) => this.readLocalFile(e)}
+                            <i
+                                title="Click this to not allow or allow html"
+                                className={`far fa-file-code white ${allowCode ? "link--active-blue" : ""}`}
                             />
-                            <label className="link--active-blue hover cursor-pointer transition far fa-file-code white" for="md-file-input"></label>
                         </span>
                         <span
                             className="no-text-decoration margin-left-one"
-                            title="Click this to save your draft."
-                            onClick={() => saveTextFromWeb(value)}
                         >
-                            <i
-                                className={`fas fa-file`}
-                            />
+                            <a
+                                href="https://github.com/steadylearner/react-easy-md#readme"
+                                title="This is link to React Easy Markdown Github Page."
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="white no-text-decoration hover"
+                            >
+                                <i
+                                    className={`fab fa-github white`}
+                                />
+                            </a>
                         </span>
                         <span
                             className={`
@@ -296,12 +294,7 @@ class LiveMarkdownEdtior extends Component {
                             />
                         </MarkdownPreviewCSS>
                 </section>
-                <footer
-                    className={`sub-navbar--about width-vw theme-black border-white center `}
-                    style={{
-                        height: "5.4rem",
-                    }}
-                >
+                <footer className={`sub-navbar--about nav-height width-vw theme-black border-white center `} >
                     <span
                         title={`This is link to /about`}
                         className="font-normal"
@@ -367,3 +360,7 @@ class LiveMarkdownEdtior extends Component {
 }
 
 export default LiveMarkdownEdtior;
+
+
+
+

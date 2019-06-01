@@ -296,6 +296,15 @@ const SteadylearnerCSS = styled.section`
     display: none !important;
   }
 
+  .x-input-dispĺay {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+  }
+
   /* It maintains layout */
   .x-opacity {
     opacity: 0;
@@ -625,6 +634,10 @@ const SteadylearnerCSS = styled.section`
 
   .margin-bottom-four {
     margin-bottom: 4rem;
+  }
+
+  .margin-right-six {
+    margin-right: 6rem;
   }
 
   .padding-left-four {

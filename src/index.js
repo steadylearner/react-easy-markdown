@@ -1,13 +1,15 @@
 import MarkdownInput from "./MarkdownInput";
 import MarkdownPreview from "./MarkdownPreview";
+
 import {
     html,
-    copy,
-    substitutePrefixes,
-    substituteWithRegex,
     markdown,
+    copy,
     readLocalFileWithHow,
     saveTextFromWeb,
+    substitutePrefixes,
+    // substitute,
+    // unsubstitute,
 } from "./api";
 
 export {
@@ -15,10 +17,14 @@ export {
     MarkdownPreview,
     //
     html,
-    copy,
-    substitutePrefixes,
-    substituteWithRegex,
     markdown,
+    //
+    copy,
     readLocalFileWithHow,
     saveTextFromWeb,
+    //
+    substitutePrefixes,
+    //
+    // substitute,
+    // unsubstitute,
 };
