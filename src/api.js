@@ -12,10 +12,6 @@ function markdown(input = "") {
     return result;
 }
 
-// const reverseAll = (arrayOfArrays = [[]]) => {
-//   return arrayOfArrays.map(array => array.reverse());
-// }
-
 // when render with React for each link inside MarkdownPreview.js
 function substitutePrefixes(
   href = "https://www.steadylearner.com",
@@ -37,28 +33,40 @@ function substitutePrefixes(
 // substituteWithRegex
 // I lost original code for them and I don't want to complicate this package any more.
 
-// const substitute = (set = [["s-", "https://"]]) => (draft = "") => {
-//   let text = draft;
-//   set.forEach(value => {
-//     // Build regexp for each value of set here
-//     const setRegex = new RegExp(value[0], 'g');
-//     text = text.replace(setRegex, value[1])
-//   });
-//   return text;
-// };
+const reverseSet = (arrayOfArrays = [[]]) => {
+  return arrayOfArrays.map(array => array.reverse());
+};
 
-// // unsubstitutewithRegex
-// const unsubstitute = (set = [["s-", "https://"]]) => (draft = "") => {
-//   let text = draft;
-//   set.forEach(value => {
-//     // Build regexp for each value of set here
-//     const setRegex = new RegExp(value[1], 'g');
-//     text = text.replace(setRegex, value[0])
-//   });
-//   return text;
-// };
+const substitute = (set = [["s-", "https://"]]) => (draft = "") => {
+   let text = draft;
+   set.forEach(value => {
+     // Build regexp for each value of set here
+     let regex = new RegExp(`: ${value[0]}`, 'g');
+     text = text.replace(regex, `: ${value[1]}`);
+     regex = new RegExp(`\[(]` + value[0], 'g');
+     text = text.replace(regex, "(" + value[1]);
+   });
+   return text;
+};
 
-//
+// set = ["g-", "https://www.github.com"]
+
+// Test with this for substitute
+// [Markdown-Tutorial]: g-
+
+// 1. [Start with Markdown-Tutorial][Markdown-Tutorial]
+// 2. [Markdown CheatSheet](g-/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
+
+// or substitue(reverseSet(set))(draft);
+const unsubstitute = (set = [["s-", "https://"]]) => (draft = "") => {
+  return substitute(reverseSet(set))(draft);
+};
+
+// [Markdown-Tutorial]: https://www.github.com.com/
+
+// Test with this for substitute
+// 1. [Start with Markdown-Tutorial][Markdown-Tutorial]
+// 2. [Markdown CheatSheet](https://www.github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
 
 function copy(value = "") { // copyToClipboardWithCode
   const textField = document.createElement("textarea");
@@ -157,8 +165,10 @@ export {
   markdown,
   //
   substitutePrefixes,
-  // substitute,
-  // unsubstitute,
+  //
+  substitute,
+  unsubstitute,
+  reverseSet,
   // Simple helper functions that you may need when you deal with markdown
   // Refer to www.steadylearner.com/markdown
   copy,

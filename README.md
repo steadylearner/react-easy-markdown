@@ -80,11 +80,9 @@ import {
 
 ## Demo
 
-1. [Live Example at Steadylearner][Markdown]
+1. [Live Editor at Steadylearner][Markdown] or [CRA Version](https://github.com/steadylearner/react-easy-md/tree/master/examples/react-easy-markdown-example)
 
 2. [Steadylearner Blog Posts](https://www.steadylearner.com/blog)
-
-3. [CRA example][examples]
 
 [![react-easy-md-example](static/images/react-easy-md-example.png)](https://github.com/steadylearner/react-easy-md/tree/master/examples/react-easy-markdown-example)
 
