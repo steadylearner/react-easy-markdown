@@ -25,38 +25,36 @@
 
 # React Easy Markdown(react-easy-md)
 
-It will help you to write Markdown with React easily.
+Write Markdown with React easily with some JavaScript modules for it.
 
 ---
 
 <!-- It turns it to absolute path at NPM -->
 
-[![react-easy-md-example](static/images/react-easy-md-example.png)](https://github.com/steadylearner/react-easy-md/tree/master/examples/react-easy-markdown-example)
+<!-- Use main image later -->
+<!-- [![react-easy-md-example](static/images/react-easy-md-example.png)](https://github.com/steadylearner/react-easy-md/tree/master/examples/react-easy-markdown-example) -->
 
-The original code used here was from [react-marked-markdown][react-marked-markdown].
+This is forked version of [react-marked-markdown].
 
 But the differences are
 
 1. It solved the problem of showing `null` title.
-2. `prefixAndReplacement` prop is included to help you write shortcuts for `<a>` inside markdown.
+2. `set` prop is included for **MarkdownPreview** to help you write shortcuts for `<a>` inside markdown.
 3. The modules used here became funtional components.
-4. LiveMarkdownEditor is removed from the package to reduce package size and refer to [example code][examples] from [Markdown Editor Page][Markdown] at [Steadylearner][Steadylearner] instead if you want a working example.
-5. You can use **API** such as **copy(ToClipBoard)**, **html** and **makrdown**.
-
-To explain more about `1.`, You can define title in Markdown with a code such as
-`[Website](https://www.steadylearner.com/ "Website")`.
-
-But having default value solves the problem of showing **null** title when users forget to define it or when you get data from the other websites that don't have title value defined with `<a>` tag.
-
-It will also be convenient to have default values to save your time and space in .md file.
+4. LiveMarkdownEditor is removed from the package to reduce package size(Refer to [example code][examples] from [Markdown Editor Page][Markdown] at [Steadylearner][Steadylearner] instead.)
+5. **API** such as **copy(ToClipBoard)**, **html**, **makrdown**, **readLocalFileWithHow** and **saveTextFromWeb** to help you handle .md file.
 
 The original Github repository is archived so this package was made to share the code from the former repository with some improvements.
 
-The name of package became "react-easy-md" for the NPM Package didn't allow "react-easy-markdown" for similarity.
+[Steadylearner] uses markdown intensively and it may have more features later.
 
-(You may think that React Easy Mardkdown refer to `react-easy-md` in this documentation.)
+To explain more about `1.`, You can define title for links with the syntax below
 
-For [Steadylearner][Steadylearner] uses markdown intensively, it may include more features later.
+```md
+[Website](https://www.steadylearner.com/ "Website")
+```
+
+But having default value solves the problem of showing **null** title when users forget to define it or third party data doesn't have it.
 
 ## Install
 
@@ -68,13 +66,187 @@ For [Steadylearner][Steadylearner] uses markdown intensively, it may include mor
 import {
   MarkdownInput,
   MarkdownPreview,
-  // Below are functions you may need while you develop
+  //
   html,
   markdown,
   copy,
-  readLocalFileWithHow, // How -> Function(How to use content of local file)
+  readLocalFileWithHow,
   saveTextFromWeb,
 } from 'react-easy-md';
+```
+
+## Demo
+
+1. [Steadylearner React-Easy-Markdown][Markdown]
+
+[![react-easy-md-example](static/images/react-easy-md-example.png)](https://github.com/steadylearner/react-easy-md/tree/master/examples/react-easy-markdown-example)
+
+2. [Steadylearner Blog Post for this package](https://www.steadylearner.com/blog/read/React-Easy-Markdown)
+
+[![react-easy-md-example](static/images/react-easy-md-post.png)](https://www.steadylearner.com/blog/read/React-Easy-Markdown)
+
+## Version Specific
+
+1. Main image for react-easy-md
+2. It will be the last main update for it.
+3. **set** will be used instead of prefixWithReplacement
+
+## API
+
+1. You can refer to documentations from [react-marked-markdown] and [marked] first.
+2. **set** is used to define shortcuts for links.
+
+### Usage of set
+
+Define set of shortcuts and links for your .md files.
+
+```jsx
+set={[
+  ["s-", "https://www.steadlyearner.com"],
+  ["l-", "https://www.linkedin.com/in"],
+  ["y-", "https://www.youtube.com/channel/"],
+  ["t-", "https://twitter.com/"],
+  ["g-", "https://www.github.com"]
+]}
+```
+
+Then, Inside `MarkdownPreview` module it will convert
+
+```md
+[Blog](s-/blog)
+[LinkedIn](l-/steady-learner-3151b7164)
+[YouTube](y-/UCt_jsJOe91EVjd58kHpgTfw)
+[Twittter](t-/steadylearner_p)
+[Github](g-/steadylearner)
+
+```
+
+equal to
+
+```md
+[Blog](https://www.steadylearner.com/blog)
+[LinkedIn](https://www.linkedin.com/in/steady-learner-3151b7164/)
+[YouTube](https://www.youtube.com/channel/UCt_jsJOe91EVjd58kHpgTfw)
+[Twittter](https://twitter.com/steadylearner_p)
+[Github](https://github.com/steadylearner)
+```
+
+With `set` from this package, **you don't have to type the entire paths anymore**.
+
+It helps you **not to repeat what you know they will do**.
+
+You can use it wherever you use link.
+
+For example,
+
+```md
+[code]: s-/code "Steadylearner Code"
+```
+
+### html and markdown
+
+```js
+import { html, markdown } from "react-easy-md";
+
+const package = "# react easy md";
+const HTML = html(package); // <h1 id="react-easy-md" >react easy md</h1>
+const react-easy-md = markdown(HTML) // "# react easy md"
+```
+
+### readLocalFileWithHow, saveTextFromWeb
+
+```js
+import React, { Component } from "react";
+import { readLocalFileWithHow, saveTextFromWeb } from "react-easy-md";
+
+class ReadSave extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: "#React Easy Markdown",
+    };
+  }
+
+  readLocalFile(e) {
+      readLocalFileWithHow(e, (value) => this.setState({
+          value,
+      }));
+  } // 1.
+
+  // 2.
+  render() {
+    const { value } = this.state;
+    return <section>
+      <i class="read-local-file" onClick={(e) => this.readLocalFile(e)} />
+      <i class="web-to-machine" onClick={() => saveTextFromWeb(value)} />
+    </section>
+  }
+}
+```
+
+You can refer to [example code][examples] to understand it better.
+
+The important parts here are
+
+1. **e** and **value** is mandatory for `readLocalFileWithHow`.(Then, You can define function for how to use it)
+2. You just need to pass **data** you want to save in your machine for saveTextFromWeb.
+
+## Example
+
+```js
+// index.js
+import React from "react";
+import ReactDOM from "react-dom";
+import { MarkdownPreview, copy } from "react-easy-md";
+
+const example = "## React Easy Markdown"
+
+function App() {
+  return (
+    <section className="App">
+      <MarkdownPreview
+        value={markdown(html(example))}
+        markedOptions={{
+          langPrefix: "hljs ", // 1.
+          sanitize: false, // // 2.
+          breaks: true, // 3.
+        }}
+        set={[
+          ["s-", "https://www.steadylearner.com"],
+          ["l-", "https://www.linkedin.com/in"],
+          ["y-", "https://www.youtube.com/channel/"],
+          ["t-", "https://twitter.com/"],
+          ["g-", "https://www.github.com"],
+        ]} // 4.
+      />
+      <button onClick={() => copy(example)} >Copy</button>
+    </section>
+  );
+}
+
+const rootElement = document.getElementById("root");
+ReactDOM.render(<App />, rootElement);
+```
+
+You can Refer to www.steadylearner.com/markdown page for live example.
+
+The important points here are
+
+1. hljs prefix to style code blocks.
+
+2. false to allow html
+
+3. You can use [enter] instead of \n
+
+4. You can define shortcut for links with **set** prop
+
+For code syntax highlight process in **1.**, you may read [How to enable code syntax highlight in React App].
+
+Then, Include link below in your index.html.
+
+```html
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/foundation.min.css" />
 ```
 
 ## Problem with Webpack?
@@ -126,180 +298,24 @@ moudle.exports = () => {
   })
 }
 
-// You should refer to TypeScript documentation
-// if you had problem with it.
 ```
 
-## Version Specific
+It is mainly to remove warnigns from the upgrade package written in TypeScript.
 
-1. **readLocalFileWithHow** to help you edit markdown directly from your local machine.
-2. **saveTextFromWeb** to help you download your markdown draft with browser API.
+You won't need them if you use CRA.
 
-## Example
-
-You may read [How to enable code syntax highlight in React App] if you want to use code snippets inside your app or visit [react-marked-markdown][react-marked-markdown] for more information.
-
-Every props used here is optional but it will be a starting point for your app. You can use **CSS** files in [examples folder][examples].
-
-```js
-// index.js
-import React from "react";
-import ReactDOM from "react-dom";
-import { MarkdownPreview, copy, html, markdown } from "react-easy-md";
-
-// Refer to www.steadylearner.com/markdown page
-import example from "./example";
-import "./styles.css";
-
-// Include <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/foundation.min.css">
-// at index.html to test hljs work or not
-
-function App() {
-  const website = "https://www.steadylearner.com";
-  return (
-    <section className="App">
-      <MarkdownPreview
-        // For we allow html with santize false, it should show the same result
-        // html and markdown API don't reserve html props well so use it with caution.
-        value={markdown(html(example))}
-        //
-        markedOptions={{
-          langPrefix: "hljs ", // hljs prefix to style code blocks.
-          sanitize: false, // allow html
-          breaks: true, // You can use [enter] to use \n
-        }}
-        // use absolute path to title attribute work well
-        prefixWithReplacement={[
-          ["s-", `${website}`],
-          ["l-", "https://www.linkedin.com/in"],
-          ["y-", "https://www.youtube.com/channel/"],
-          ["t-", "https://twitter.com/"],
-          ["compare-", `${website}/blog/read`],
-          ["g-", "https://www.github.com"]
-        ]} // You can define multiple shortcuts for links in markdown
-      />
-      <button onClick={() => copy(html(example))} >Copy</button>
-      {/* <br /> */}
-      <span className="blue"> and paste it to <a href="www.steadylearner.com/markdown">www.steadylearner.com/markdown</a></span>
-      {/* <section>{html(example)}</section> */}
-    </section>
-  );
-}
-
-const rootElement = document.getElementById("root");
-ReactDOM.render(<App />, rootElement);
-
-
-```
-
-## API
-
-1. You can refer to [react-marked-markdown][react-marked-markdown] [marked][marked].
-2. To understand **prefixWithReplacement** better, please visit [How to write less code for links in markdown with React][How to write less code for links in markdown with React].
-
-### Usage of prefixWithReplacement
-
-The part of the code snippet from the example above
-
-```jsx
-prefixWithReplacement={[
-  ["s-", "https://www.steadlyearner.com"],
-  ["l-", "https://www.linkedin.com/in"],
-  ["y-", "https://www.youtube.com/channel/"],
-  ["t-", "https://twitter.com/"],
-  ["g-", "https://www.github.com"]
-]}
-```
-
-We pass various **prefixes** with **its replacements** with data type **array of arrays**.
-
-Then, Inside `MarkdownPreview` module it will convert
-
-```md
-[Blog](s-/blog)
-[LinkedIn](l-/steady-learner-3151b7164)
-[YouTube](y-/UCt_jsJOe91EVjd58kHpgTfw)
-[Twittter](t-/steadylearner_p)
-[Github](g-/steadylearner)
-
-<!-- You can use it wherever you use link -->
-<!-- [code]: s-/code "Steadylearner Code" -->
-```
-
-equal to
-
-```md
-[Blog](https://www.steadylearner.com/blog)
-[LinkedIn](https://www.linkedin.com/in/steady-learner-3151b7164/)
-[YouTube](https://www.youtube.com/channel/UCt_jsJOe91EVjd58kHpgTfw)
-[Twittter](https://twitter.com/steadylearner_p)
-[Github](https://github.com/steadylearner)
-```
-
-With `prefiexWithReplacement` from this package, **you don't have to type the entire paths anymore**.
-It helps you **not to repeat what you know they will do**.
-
-### html and markdown
-
-```js
-// This is just to show how it works
-import { html, markdown } from "react-easy-md";
-
-const package = "# react easy md";
-const HTML = html(package); // <h1 id="react-easy-md" >react easy md</h1>
-const react-easy-md = markdown(HTML) // "# react easy md"
-
-```
-
-### readLocalFileWithHow, saveTextFromWeb
-
-```js
-import React, { Component } from "react";
-import { readLocalFileWithHow, saveTextFromWeb } from "react-easy-md";
-
-class ReadSave extends Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      value: "",
-    };
-  }
-
-  readLocalFile(e) {
-      readLocalFileWithHow(e, (value) => this.setState({
-          value,
-      }));
-  }
-
-  render() {
-    const { value } = this.state;
-    return (<section>
-      <i class="read-local-file" onClick={(e) => this.readLocalFile(e)} />
-      <p>{value}</p>
-      <i class="web-to-machine" onClick={() => saveTextFromWeb(value)} />
-    </section>)
-  }
-}
-```
-
-## Demo
-
-1. [Steadylearner React-Easy-Markdown][Markdown]
-
-2. [Steadylearner Blog Post for this package](https://www.steadylearner.com/blog/read/React-Easy-Markdown)
-
-[![react-easy-md-example](static/images/react-easy-md-post.png)](https://www.steadylearner.com/blog/read/React-Easy-Markdown)
+(This package upgraded dependencies from [react-marked-markdown] and one of new dependency use TpyeScript and it makes dependency problems. So you have to enable TypeScript for your bundler.
+)
 
 ## What is Next?
 
-1. **Tests**, **examples** and the webpage.
-2. [Posts][Blog] to explain it at [Steadylearner][Steadylearner]
+1. Test
+2. Post
 
 ## Read More
 
-1. [Steadylearner Blog Posts for examples][blog]
-2. [prop-passer to help you write less prop and className][prop-passer]
+1. [Steadylearner Blog Posts for .md file examples][blog]
+2. [React Easy Markdown Live example](httts://www.steadylearner.com/markdown)
 
 ## Where to learn and use markdown?
 
