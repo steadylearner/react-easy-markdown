@@ -1,4 +1,8 @@
-const example = `## Where to learn and use markdown?
+const example = `[Emoji works](n-/node-emoji)
+
+<!-- You can use remote .md files with ctrl + /. You can test it with https://raw.githubusercontent.com/steadylearner/Steadylearner/master/post/npm-React%20Easy%20Markdown.md. You can also use shift+f to test it with your local.md files -->
+
+## Where to learn and use markdown?
 
  [Markdown-Tutorial]: https://www.markdowntutorial.com/
 
@@ -158,7 +162,6 @@ With ReactMarkdown from react-easy-md, **you don't have to type the entire paths
 2. Examples similar to [Steadylearner Markdown Editor Page][markdown] and other pages at [Steadylearner][Steadylearner]
 3. Update the package to use latest dependencies and test it with **Jest**
 4. **Tests and examples**
-
 `;
 
 export default example;

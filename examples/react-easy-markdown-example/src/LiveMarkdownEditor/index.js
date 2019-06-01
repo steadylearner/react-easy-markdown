@@ -58,7 +58,7 @@ class LiveMarkdownEdtior extends Component {
                 value,
             })
         })
-    }
+    } // f
 
     showExample() {
 		this.setState({
@@ -121,35 +121,52 @@ class LiveMarkdownEdtior extends Component {
     } // p
 
     eventWithKeyDown = (e) => {
-        if ( e.keyCode === 82 && e.shiftKey) {
-			e.preventDefault();
-			this.clear();
-		} // R
-
+        const {value, title} = this.state;
+        
 		if (e.keyCode === 67 && e.shiftKey) {
 			e.preventDefault();
 			this.copyToClipboardWithCode(this.state.value);
 		} // C
 
+        if (e.keyCode === 70 && e.shiftKey) {
+            e.preventDefault();
+            const load = document.getElementById("md-file-input");
+            load.click();
+        } // F
+
 		if (e.keyCode === 76 && e.shiftKey) {
 			e.preventDefault();
-			this.callDraftFromLocalStorage(e);
+            this.callDraftFromLocalStorage(e);
         } // L
 
-		if (e.keyCode === 72 && e.shiftKey) {
-			e.preventDefault();
-			this.toHTML();
-        } // H
-
-		if (e.keyCode === 80 && e.shiftKey) {
-			e.preventDefault();
-			this.toMarkdown();
-        } // P
+        if (e.keyCode === 82 && e.shiftKey) {
+            e.preventDefault();
+            this.clear();
+        } // R
 
         if (e.keyCode === 83 && e.shiftKey) {
-			e.preventDefault();
-			this.showExample();
-		} // S
+            saveTextFromWeb(value, title)
+        } // S
+
+        // if (e.keyCode === 72 && e.shiftKey) {
+		// 	e.preventDefault();
+		// 	this.toHTML();
+        // } // H
+
+		// if (e.keyCode === 80 && e.shiftKey) {
+		// 	e.preventDefault();
+		// 	this.toMarkdown();
+        // } // P
+
+        // if (e.keyCode === 76 && e.shiftKey) {
+		// 	e.preventDefault();
+		// 	this.callDraftFromLocalStorage(e);
+        // } // L
+
+        // if (e.keyCode === 83 && e.shiftKey) {
+		// 	e.preventDefault();
+		// 	this.showExample();
+		// } // S
 	}
 
 	componentDidMount() {
@@ -172,7 +189,7 @@ class LiveMarkdownEdtior extends Component {
             ["t-", "https://twitter.com/steadylearner_p"],
             ["g-", "https://www.github.com"],
         ];
-        
+
         const valueWithEmoji = emoji.emojify(value);
 
         const includeEmoji = hasEmoji(valueWithEmoji);
@@ -191,7 +208,7 @@ class LiveMarkdownEdtior extends Component {
                     <ClassProp>
                         <span
                             className="no-text-decoration margin-left-two  "
-                            title="Click it to load local .md file"
+                            title="Click it or ⌨ Press shift+f to load local .md file"
                         >
                             <input
                                 className="md-file-input"
@@ -201,11 +218,15 @@ class LiveMarkdownEdtior extends Component {
                                 accept=".md"
                                 onClick={(e) => this.readLocalFile(e)}
                             />
-                            <label className="link--active-blue hover cursor-pointer transition far fa-file-code white" for="md-file-input"></label>
+                            <label 
+                                className="link--active-blue hover cursor-pointer transition far fa-file-code white"
+                                htmlFor="md-file-input"
+                            >
+                            </label>
                         </span>
                         <span
                             className="no-text-decoration margin-left-one"
-                            title="Click this to save your draft."
+                            title="Click this or ⌨ Press shift+s to save your draft."
                             onClick={() => saveTextFromWeb(value, title)}
                         >
                             <i
@@ -217,7 +238,8 @@ class LiveMarkdownEdtior extends Component {
                                 margin-left-one
                             `}
                             onClick={() => this.showExample()}
-                            title="Click it or ⌨ Press shift+S to show example by Steadylearner"
+                            title="Click it to show example by Steadylearner"
+                            // title="Click it or ⌨ Press shift+S to show example by Steadylearner"
                         >
                             <i className="fas fa-hand-point-right " />
                             {" "}
@@ -230,7 +252,8 @@ class LiveMarkdownEdtior extends Component {
                         <span
                             className="transition text-shadow-blue-hover cursor-pointer no-text-decoration margin-right-one font-two-and-a-half"
                             onClick={() => this.toMarkdown()}
-                            title="Click it or ⌨ Press shift+p to turn your HTML to Markdown."
+                            title="Click it to turn your HTML to Markdown."
+                            // title="Click it or ⌨ Press shift+p to turn your HTML to Markdown."
                         >
                             <i
                                 className="fas fa-code"
@@ -250,7 +273,8 @@ class LiveMarkdownEdtior extends Component {
                         <span
                             className="transition text-shadow-red-hover font-two-and-a-half cursor-pointer no-text-decoration margin-left-one margin-right-six"
                             onClick={() => this.toHTML()}
-                            title="Click it or ⌨ Press shift+h to turn your content to HTML"
+                            title="Click it to turn your content to HTML"
+                            // title="Click it or ⌨ Press shift+h to turn your content to HTML"
                         >
                             <i
                                 className={`fab fa-html5 white`}
@@ -277,7 +301,8 @@ class LiveMarkdownEdtior extends Component {
                         <span
                             className={`margin-right-two`}
                             onClick={() => this.callDraftFromLocalStorage()}
-                            title="Click it or ⌨ Press shift+l to load the last draft"
+                            title="Click it or ⌨ Press shift+l to load the last draft from localstorage"
+                            // title="Click it to load the last draft from localstorage"
                         >
                             <i className={`fas fa-database ${isThereDraft && "red-white"}`}></i>
                         </span>
