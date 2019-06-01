@@ -34,9 +34,7 @@ Write Markdown with React easily with some JavaScript modules for it.
 <!-- Use main image later -->
 <!-- [![react-easy-md-example](static/images/react-easy-md-example.png)](https://github.com/steadylearner/react-easy-md/tree/master/examples/react-easy-markdown-example) -->
 
-This is forked version of [react-marked-markdown].
-
-But the differences are
+This is forked version of [react-marked-markdown]. But the differences are
 
 1. It solved the problem of showing `null` title.
 2. `set` prop is included for **MarkdownPreview** to help you write shortcuts for `<a>` inside markdown.
@@ -54,13 +52,13 @@ To explain more about `1.`, You can define title for links with the syntax below
 [Website](https://www.steadylearner.com/ "Website")
 ```
 
-But having default value solves the problem of showing **null** title when users forget to define it or third party data doesn't have it.
+But having default value solves the problem of showing **null** title when users forget to define it or when third party data doesn't have it.
 
 ## Install
 
 1. Type `$npm install --save react-easy-md` or `$yarn add react-easy-md` in your **CLI**
 
-2. Import component(s) you want
+2. Then,import component(s) you want
 
 ```js
 import {
@@ -75,21 +73,22 @@ import {
 } from 'react-easy-md';
 ```
 
+## Version Specific
+
+1. Main image for react-easy-md and it will be the last main update for it.
+2. **set** will be used for shorcut and links.
+
 ## Demo
 
-1. [Steadylearner React-Easy-Markdown][Markdown]
+1. [Live Example at Steadylearner][Markdown]
+
+2. [Steadylearner Blog Posts](https://www.steadylearner.com/blog)
+
+3. [CRA example][examples]
 
 [![react-easy-md-example](static/images/react-easy-md-example.png)](https://github.com/steadylearner/react-easy-md/tree/master/examples/react-easy-markdown-example)
 
-2. [Steadylearner Blog Post for this package](https://www.steadylearner.com/blog/read/React-Easy-Markdown)
-
 [![react-easy-md-example](static/images/react-easy-md-post.png)](https://www.steadylearner.com/blog/read/React-Easy-Markdown)
-
-## Version Specific
-
-1. Main image for react-easy-md
-2. It will be the last main update for it.
-3. **set** will be used instead of prefixWithReplacement
 
 ## Example
 
