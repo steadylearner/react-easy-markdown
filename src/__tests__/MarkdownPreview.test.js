@@ -16,7 +16,7 @@ describe('MarkdownPreview', () => {
     const wrapper = shallow(<MarkdownPreview value={test} markedOptions={{ sanitize: true }} />);
     expect(wrapper.html())
       .not.toBe(test); // "<div><p>&lt;h1&gt;Title&lt;/h1&gt;</p></div>"
-  });  
+  });
 });
 
 

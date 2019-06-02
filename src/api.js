@@ -12,6 +12,18 @@ function markdown(input = "") {
     return result;
 }
 
+function substitutePrefix(
+  href = "https://www.steadylearner.com",
+  set = ["s-", "https://"],
+) {
+  const substituteItOrNot = href.startsWith(set[0])
+  if (substituteItOrNot) {
+    return `${set[1]}${href.split(set[0])[1]}`;
+  } else {
+    return href;
+  }
+}
+
 // when render with React for each link inside MarkdownPreview.js
 function substitutePrefixes(
   href = "https://www.steadylearner.com",
@@ -164,11 +176,12 @@ export {
   html,
   markdown,
   //
+  substitutePrefix,
   substitutePrefixes,
   //
   substitute,
-  unsubstitute,
   reverseSet,
+  unsubstitute,
   // Simple helper functions that you may need when you deal with markdown
   // Refer to www.steadylearner.com/markdown
   copy,
