@@ -7,4 +7,3 @@
 [test](s-/blog)
 
 s-, https://www.steadylearner.com
-

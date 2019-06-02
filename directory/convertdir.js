@@ -55,9 +55,8 @@ read(directoryPath, function (err, files) {
       // });
 
       readFile(`${directoryPath}/${file}`, 'utf8', (err, data) => {
-         if (err) {
-            throw err;
-         }
+         if (err) throw err;
+         
          console.log("Before: ", data);
          const substituted = substitute(set)(data);
          console.log("After: ", substituted);
@@ -65,9 +64,7 @@ read(directoryPath, function (err, files) {
          const draft = new Uint8Array(Buffer.from(substituted));
 
          writeFile(`${compareDirectoryPath}/${file}`, draft, 'utf8', (err) => {
-            if (err) {
-               throw err;
-            }
+            if (err) throw err;
          });
       });
    });
