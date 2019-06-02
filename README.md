@@ -205,7 +205,7 @@ You can use shortcuts you define in **set** and use **substitute** before you us
 don't have code to convert them.
 
 ```jsx
-import { substitute } from "react-easy-md";
+import { substitute, unsubstitute } from "react-easy-md";
 
 const set={[
   ["s-", "https://www.steadlyearner.com"],
