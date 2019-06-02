@@ -1,7 +1,5 @@
 const example = `[Emoji works](n-/node-emoji)
 
-<!-- You can use remote .md files with ctrl + /. You can test it with https://raw.githubusercontent.com/steadylearner/Steadylearner/master/post/npm-React%20Easy%20Markdown.md. You can also use shift+f to test it with your local.md files -->
-
 ## Where to learn and use markdown?
 
  [Markdown-Tutorial]: https://www.markdowntutorial.com/

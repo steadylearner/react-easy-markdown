@@ -15,6 +15,7 @@ import {
     copy,
     readLocalFileWithHow,
     saveTextFromWeb,
+    substitute,
 } from "../react-easy-md";
 import {
     saveStateToLocalStorage,
@@ -29,6 +30,16 @@ import MarkdownPreviewCSS from "./CSS/MarkdownPreviewCSS";
 const ClassProp = Prop({
     className: "hover transition cursor-pointer"
 });
+
+// should be without / at the end.
+const set = [
+    ["s-", "https://www.steadlyearner.com"],
+    ["l-", "https://www.linkedin.com/in/steady-learner-3151b7164"],
+    ["n-", "https://www.npmjs.com/package"],
+    ["y-", "https://www.youtube.com/channel/UCt_jsJOe91EVjd58kHpgTfw"],
+    ["t-", "https://twitter.com/steadylearner_p"],
+    ["g-", "https://www.github.com"],
+];
 
 // I want to separate data and its methods later.
 class LiveMarkdownEdtior extends Component {
@@ -93,7 +104,8 @@ class LiveMarkdownEdtior extends Component {
 
     copyToClipboardWithCode(value) {
         if (this.state.value !== "") {
-            copy(value);
+            copy(substitute(set)(value)); // automatically convert shorcut
+            // copy(value);
             this.setState({
                 copySuccess: "Copied",
             })
@@ -145,7 +157,7 @@ class LiveMarkdownEdtior extends Component {
         } // R
 
         if (e.keyCode === 83 && e.shiftKey) {
-            saveTextFromWeb(value, title)
+            saveTextFromWeb(substitute(set)(value), title)
         } // S
 
         // if (e.keyCode === 72 && e.shiftKey) {
@@ -181,14 +193,14 @@ class LiveMarkdownEdtior extends Component {
         const { value, title, copySuccess, allowCode } = this.state;
         const isThereDraft = loadStateFromLocalStorage("markdown");
 
-        const set = [
-            ["s-", "https://www.steadlyearner.com"],
-            ["l-", "https://www.linkedin.com/in/steady-learner-3151b7164/"],
-            ["n-", "https://www.npmjs.com/package/"],
-            ["y-", "https://www.youtube.com/channel/UCt_jsJOe91EVjd58kHpgTfw"],
-            ["t-", "https://twitter.com/steadylearner_p"],
-            ["g-", "https://www.github.com"],
-        ];
+        // const set = [
+        //     ["s-", "https://www.steadlyearner.com"],
+        //     ["l-", "https://www.linkedin.com/in/steady-learner-3151b7164/"],
+        //     ["n-", "https://www.npmjs.com/package/"],
+        //     ["y-", "https://www.youtube.com/channel/UCt_jsJOe91EVjd58kHpgTfw"],
+        //     ["t-", "https://twitter.com/steadylearner_p"],
+        //     ["g-", "https://www.github.com"],
+        // ];
 
         const valueWithEmoji = emoji.emojify(value);
 
@@ -218,7 +230,7 @@ class LiveMarkdownEdtior extends Component {
                                 accept=".md"
                                 onClick={(e) => this.readLocalFile(e)}
                             />
-                            <label 
+                            <label
                                 className="link--active-blue hover cursor-pointer transition far fa-file-code white"
                                 htmlFor="md-file-input"
                             >
@@ -227,7 +239,8 @@ class LiveMarkdownEdtior extends Component {
                         <span
                             className="no-text-decoration margin-left-one"
                             title="Click this or ⌨ Press shift+s to save your draft."
-                            onClick={() => saveTextFromWeb(value, title)}
+                            onClick={() => saveTextFromWeb(substitute(set)(value), title)}
+                            // or saveTextFromWeb(value, title), if you want to preserve shortcuts
                         >
                             <i
                                 className={`fas fa-file`}

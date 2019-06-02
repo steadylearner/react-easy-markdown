@@ -7,11 +7,9 @@ import {
     copy,
     readLocalFileWithHow,
     saveTextFromWeb,
-    substitutePrefix,
     substitutePrefixes,
-    substitute,
-    reverseSet,
-    unsubstitute,
+    // substitute,
+    // unsubstitute,
 } from "./api";
 
 export {
@@ -25,10 +23,8 @@ export {
     readLocalFileWithHow,
     saveTextFromWeb,
     //
-    substitutePrefix, // It is just for test
     substitutePrefixes,
     //
-    substitute,
-    reverseSet,
-    unsubstitute,
+    // substitute,
+    // unsubstitute,
 };

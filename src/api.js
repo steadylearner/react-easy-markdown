@@ -58,7 +58,8 @@ let substitute = (set = [["s-", "https://"]]) => (draft = "") => {
      // Build regexp for each value of set here
      let regex = new RegExp(`: ${value[0]}`, 'g');
      text = text.replace(regex, `: ${value[1]}`);
-     regex = new RegExp(`\[(]` + value[0], 'g');
+      regex = new RegExp(`\[(]` + value[0], 'g'); // ESLint shows '\[', but without it, tests don't pass
+    //  regex = new RegExp(`(]` + value[0], 'g');
      text = text.replace(regex, "(" + value[1]);
    });
    return text;

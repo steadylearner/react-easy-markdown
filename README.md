@@ -70,13 +70,17 @@ import {
   copy,
   readLocalFileWithHow,
   saveTextFromWeb,
+  //
+  substitute,
+  // reverseSet,
+  // unsubstitute,
 } from 'react-easy-md';
 ```
 
 ## Version Specific
 
 1. Main image for react-easy-md and it will be the last main update for it.
-2. **set** will be used for shorcut and links.
+2. **set** will be used for shortcuts(You may use **substitute** to use entire paths when you save file.)
 
 ## Demo
 
@@ -94,9 +98,17 @@ import {
 // index.js
 import React from "react";
 import ReactDOM from "react-dom";
-import { MarkdownPreview, copy } from "react-easy-md";
+import { MarkdownPreview, copy, } from "react-easy-md";
 
 const example = "## React Easy Markdown"
+
+const set = [
+  ["s-", "https://www.steadylearner.com"],
+  ["l-", "https://www.linkedin.com/in"],
+  ["y-", "https://www.youtube.com/channel/"],
+  ["t-", "https://twitter.com/"],
+  ["g-", "https://www.github.com"],
+];
 
 function App() {
   return (
@@ -108,13 +120,7 @@ function App() {
           sanitize: false, // // 2.
           breaks: true, // 3.
         }}
-        set={[
-          ["s-", "https://www.steadylearner.com"],
-          ["l-", "https://www.linkedin.com/in"],
-          ["y-", "https://www.youtube.com/channel/"],
-          ["t-", "https://twitter.com/"],
-          ["g-", "https://www.github.com"],
-        ]} // 4.
+        set={set} // 4.
       />
       <button onClick={() => copy(example)} >Copy</button>
     </section>
@@ -145,17 +151,17 @@ Then, Include link below in your index.html.
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/foundation.min.css" />
 ```
 
-## API
+## Main API
 
-1. You can refer to documentations from [react-marked-markdown] and [marked] first.
-2. Main API is **MarkdownPreview** and **set** is used to define shortcuts for links.
+1. Main API is **MarkdownPreview** and **set** is used to define shortcuts for links.
+2. You can refer to documentations from [react-marked-markdown] and [marked] first.
 
-### Usage of set
+### set
 
 Define set of shortcuts and links for your .md files.
 
-```jsx
-set={[
+```js
+const set={[
   ["s-", "https://www.steadlyearner.com"],
   ["l-", "https://www.linkedin.com/in"],
   ["y-", "https://www.youtube.com/channel/"],
@@ -164,7 +170,7 @@ set={[
 ]}
 ```
 
-Then, Inside `MarkdownPreview` module it will convert
+Then, pass it to `MarkdownPreview` for set prop and it will convert
 
 ```md
 [Blog](s-/blog)
@@ -172,7 +178,6 @@ Then, Inside `MarkdownPreview` module it will convert
 [YouTube](y-/UCt_jsJOe91EVjd58kHpgTfw)
 [Twittter](t-/steadylearner_p)
 [Github](g-/steadylearner)
-
 ```
 
 equal to
@@ -188,14 +193,42 @@ equal to
 With `set` from this package, **you don't have to type the entire paths anymore**.
 
 It helps you **not to repeat what you know they will do**.
-
-You can use it wherever you use link.
-
-For example,
+You can use it wherever you use link. For example,
 
 ```md
 [code]: s-/code "Steadylearner Code"
 ```
+
+### substitute, unsubstitue, reverseSet
+
+You can use shortcuts you define in **set** and use **substitute** before you use .md file where
+don't have code to convert them.
+
+```jsx
+import { substitute } from "react-easy-md";
+
+const set={[
+  ["s-", "https://www.steadlyearner.com"],
+  ["l-", "https://www.linkedin.com/in"],
+  ["y-", "https://www.youtube.com/channel/"],
+  ["t-", "https://twitter.com/"],
+  ["g-", "https://www.github.com"]
+]};
+
+const short = ": s-, (s-)";
+const long = ": www.steadylearner.com, (https://www.steadylearner.com)";
+substitute(set)(short); // equals to long
+unsubstitue(set)(long); // eqauls to short
+```
+
+What you need is just to wrap .md file **value** with `substitute(set)(value)`.
+
+unsubstitue is just reverse API of substitute. You can make it with substitute and reverseSet.
+But it is included for your convenience.
+
+You can refer to [example code][examples] to understand it better or [tests](https://github.com/steadylearner/react-easy-md/tree/master/src/__tests__) for it.
+
+They use regex so you have to use it with caution and test for your .md file before you use them.
 
 ### html and markdown
 
@@ -206,6 +239,10 @@ const package = "# react easy md";
 const HTML = html(package); // <h1 id="react-easy-md" >react easy md</h1>
 const react-easy-md = markdown(HTML) // "# react easy md"
 ```
+
+## API to read and save .md files
+
+You can use them for .md files or other usages.
 
 ### readLocalFileWithHow, saveTextFromWeb
 
@@ -218,7 +255,7 @@ class ReadSave extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: "#React Easy Markdown",
+      value: "# React Easy Markdown",
     };
   }
 
@@ -231,10 +268,30 @@ class ReadSave extends Component {
   // 2.
   render() {
     const { value } = this.state;
-    return <section>
-      <i class="read-local-file" onClick={(e) => this.readLocalFile(e)} />
-      <i class="web-to-machine" onClick={() => saveTextFromWeb(value)} />
-    </section>
+
+    return (<section>
+      <span>
+          <input
+              className="md-file-input"
+              type="file"
+              id="md-file-input"
+              name="md-file-input"
+              accept=".md"
+              onClick={(e) => this.readLocalFile(e)}
+          />
+          <label
+            htmlFor="md-file-input"
+          >
+          </label>
+      </span>
+      <span
+          onClick={() => saveTextFromWeb(value)}
+      >
+          <i
+              className={`fas fa-file`}
+          />
+      </span>
+    </section>);
   }
 }
 ```
