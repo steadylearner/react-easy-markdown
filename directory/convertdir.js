@@ -1,8 +1,6 @@
 const path = require('path');
 const { readdir: read, readFile, writeFile, copyFile, mkdir: makedir } = require('fs');
 
-//
-
 const substitute = (set = [["s-", "https://"]]) => (draft = "") => {
    let text = draft;
    set.forEach(value => {
@@ -17,7 +15,6 @@ const substitute = (set = [["s-", "https://"]]) => (draft = "") => {
 };
 
 // Use your own set instead
-
 const set = [
   ["s-", "https://www.steadylearner.com"],
   ["n-", "https://www.npmjs.com"],
@@ -27,11 +24,12 @@ const set = [
 
 const param = process.argv.slice(2);
 
+const before = param[0] || "posts";
+const after = param[1] || "GitHub";
+
 // $node convertdir.js <withshorcut> <withoutshortcut>;
 // $node convertdir.js posts GitHub
 // $node convertdir.js posts posts_c
-const before = param[0] || "posts";
-const after = param[1] || "GitHub";
 
 //joining path of directory
 const directoryPath = path.join(__dirname, before);

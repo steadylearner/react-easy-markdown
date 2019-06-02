@@ -373,6 +373,12 @@ You won't need them if you use CRA.
 1. [Steadylearner Blog Posts for .md file examples][blog]
 2. [React Easy Markdown Live example](https://www.steadylearner.com/markdown)
 
+## Substitute shortcut for every .md files?
+
+Use [convertdir.js](https://github.com/steadylearner/react-easy-md/blob/master/directory/convertdir.js) `$node convertdir.js <before> <after>` or `$node convertdir.js posts GitHub` etc.
+
+(I prepared node executable file example for you. Use your set and edit it if you want.)
+
 ## Where to learn and use markdown?
 
  [Markdown-Tutorial]: https://www.markdowntutorial.com/
