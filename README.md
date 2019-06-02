@@ -7,6 +7,7 @@
 [How to enable code syntax highlight in React App]: https://medium.com/@steadylearner/how-to-enable-code-syntax-highlight-in-react-app-38463498fa6e
 [How to write less code for links in markdown with React]: https://www.steadylearner.com/blog/read/How-to-write-less-code-for-links-in-markdown-with-React
 [marked]: https://github.com/markedjs/marked
+[convertdir.js]: https://github.com/steadylearner/react-easy-md/blob/master/directory/convertdir.js
 
 <!-- \Shortcut -->
 
@@ -232,6 +233,8 @@ You can refer to [example code][examples] to understand it better or [tests](htt
 
 They use regex so you have to use it with caution and test for your .md file before you use them.
 
+If you want to use it for all files in directory, please refer to [convertdir.js].
+
 ### html and markdown
 
 ```js
@@ -375,9 +378,9 @@ You won't need them if you use CRA.
 
 ## Substitute shortcut for every .md files?
 
-Use [convertdir.js](https://github.com/steadylearner/react-easy-md/blob/master/directory/convertdir.js) `$node convertdir.js <before> <after>` or `$node convertdir.js posts GitHub` etc.
+Use [convertdir.js] `$node convertdir.js <before> <after>` or `$node convertdir.js posts GitHub` etc.
 
-(I prepared node executable file example for you. Use your set and edit it if you want.)
+(I prepared node executable example file for you. Use your set and edit it if you want.)
 
 ## Where to learn and use markdown?
 

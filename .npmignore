@@ -26,5 +26,8 @@ javascript/
 babel.config.js
 jest.config.js 
 
+# You don't need it for your app
+directory/
+
 # https://docs.npmjs.com/misc/scripts
 # You don't have to manually build this with this script
