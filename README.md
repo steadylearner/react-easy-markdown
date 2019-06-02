@@ -81,6 +81,8 @@ import {
 
 1. Main image for react-easy-md and it will be the last main update for it.
 2. **set** will be used for shortcuts(You may use **substitute** to use entire paths when you save file.)
+3. Test and examples are updated.
+4. It will be the last main update for this package.
 
 ## Demo
 
