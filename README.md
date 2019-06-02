@@ -296,7 +296,7 @@ class ReadSave extends Component {
 }
 ```
 
-You can refer to [example code][examples] to understand it better.
+You can refer to [example code][examples] for their usages.
 
 The important parts here are
 
@@ -369,7 +369,7 @@ You won't need them if you use CRA.
 ## Read More
 
 1. [Steadylearner Blog Posts for .md file examples][blog]
-2. [React Easy Markdown Live example](httts://www.steadylearner.com/markdown)
+2. [React Easy Markdown Live example](https://www.steadylearner.com/markdown)
 
 ## Where to learn and use markdown?
 
