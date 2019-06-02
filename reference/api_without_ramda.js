@@ -1,25 +1,21 @@
 import { lexer, parser } from "marked";
 import showdown from "showdown";
 
-import { memoizeWith, identity } from "./ramda";
-
-// memoizeWith only for pure functio
-let html = (input = "") => {
+function html(input = "") {
   const test = parser(lexer(input));
   return test;
-};
+}
 
-html = memoizeWith(identity, html);
-
-let markdown = (input = "") => {
+function markdown(input = "") {
     const converter = new showdown.Converter();
     const result = converter.makeMarkdown(input);
     return result;
 }
 
-markdown = memoizeWith(identity, markdown);
-
-const substitutePrefix = (href = "https://www.steadylearner.com") => (set = ["s-", "https://"]) => {
+function substitutePrefix(
+  href = "https://www.steadylearner.com",
+  set = ["s-", "https://"],
+) {
   const substituteItOrNot = href.startsWith(set[0])
   if (substituteItOrNot) {
     return `${set[1]}${href.split(set[0])[1]}`;
@@ -29,7 +25,12 @@ const substitutePrefix = (href = "https://www.steadylearner.com") => (set = ["s-
 }
 
 // when render with React for each link inside MarkdownPreview.js
-let substitutePrefixes = (href = "https://www.steadylearner.com") => (set = [["s-", "https://"]]) => {
+function substitutePrefixes(
+  href = "https://www.steadylearner.com",
+  set = [
+    ["s-", "https://"],
+  ],
+) {
   const isHrefIncludeAnyPrefix = set.filter(x => href.startsWith(x[0]));
 
   if(isHrefIncludeAnyPrefix.length === 1) { // === i instead of > 0 to be more precise
@@ -39,20 +40,16 @@ let substitutePrefixes = (href = "https://www.steadylearner.com") => (set = [["s
   }
 }
 
-substitutePrefixes = memoizeWith(identity, substitutePrefixes);
-
 // Test it and verify that it need exact match or others
 // Use it for .md files made with this package.
 // substituteWithRegex
 // I lost original code for them and I don't want to complicate this package any more.
 
-let reverseSet = (arrayOfArrays = [[]]) => {
+const reverseSet = (arrayOfArrays = [[]]) => {
   return arrayOfArrays.map(array => array.reverse());
 };
 
-reverseSet = memoizeWith(identity, reverseSet);
-
-let substitute = (set = [["s-", "https://"]]) => (draft = "") => {
+const substitute = (set = [["s-", "https://"]]) => (draft = "") => {
    let text = draft;
    set.forEach(value => {
      // Build regexp for each value of set here
@@ -64,8 +61,6 @@ let substitute = (set = [["s-", "https://"]]) => (draft = "") => {
    return text;
 };
 
-substitute = memoizeWith(identity, substitute);
-
 // set = ["g-", "https://www.github.com"]
 
 // Test with this for substitute
@@ -75,11 +70,9 @@ substitute = memoizeWith(identity, substitute);
 // 2. [Markdown CheatSheet](g-/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
 
 // or substitue(reverseSet(set))(draft);
-let unsubstitute = (set = [["s-", "https://"]]) => (draft = "") => {
+const unsubstitute = (set = [["s-", "https://"]]) => (draft = "") => {
   return substitute(reverseSet(set))(draft);
 };
-
-unsubstitute = memoizeWith(identity, unsubstitute);
 
 // [Markdown-Tutorial]: https://www.github.com.com/
 
@@ -174,8 +167,9 @@ function saveTextFromWeb(text = "", name = "README.md", type = "text/plain")
     fileLink.click();
 }
 
-function destroyClickedElement(event) {
-  document.body.removeChild(event.target);
+function destroyClickedElement(event)
+{
+    document.body.removeChild(event.target);
 }
 
 export {

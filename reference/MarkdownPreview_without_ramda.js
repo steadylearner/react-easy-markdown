@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import createDOMPurify from "dompurify";
 import { JSDOM } from "jsdom";
 
-import { substitutePrefixes } from "./api";
+import { substitutePrefixes } from "../src/api";
 
 // Initializing DOM Purify
 const window = new JSDOM("").window;
@@ -55,7 +55,7 @@ function MarkdownPreview({
   // Remove null title problem when it is undefined by giving default value
   // and you can define shortcuts for <a> in markdown
   renderer.link = (href, title, text) => {
-    const lastHref = substitutePrefixes(href)(set);
+    const lastHref = substitutePrefixes(href, set);
 
     return `<a target="_blank" rel="noopener noreferrer" href="${lastHref}" title="${
       title === null ? `${titleMessage} ${lastHref}` : title
