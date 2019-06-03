@@ -39,8 +39,8 @@ This is forked version of [react-marked-markdown]. But the differences are
 
 1. It solved the problem of showing `null` title.
 2. `set` prop is included for **MarkdownPreview** to help you write shortcuts for `<a>` inside markdown.
-3. The modules used here became funtional components.
-4. LiveMarkdownEditor is removed from the package to reduce package size(Refer to [example code][examples] from [Markdown Editor Page][Markdown] at [Steadylearner][Steadylearner] instead.)
+3. The modules used here became functional components.
+4. LiveMarkdownEditor is removed from the package to reduce package size(Refer to [examples] from [Markdown Editor Page][Markdown] at [Steadylearner] instead.)
 5. **API** such as **copy(ToClipBoard)**, **html**, **makrdown**, **readLocalFileWithHow** and **saveTextFromWeb** to help you handle .md file.
 
 The original Github repository is archived so this package was made to share the code from the former repository with some improvements.
@@ -53,7 +53,7 @@ To explain more about `1.`, You can define title for links with the syntax below
 [Website](https://www.steadylearner.com/ "Website")
 ```
 
-But having default value solves the problem of showing **null** title when users forget to define it or when third party data doesn't have it.
+But having default value solves the problem of showing **null** title when users forget to define it or when third party data doesn't send it.
 
 ## Install
 
@@ -301,7 +301,7 @@ class ReadSave extends Component {
 }
 ```
 
-You can refer to [example code][examples] for their usages.
+You can refer to [examples] for them.
 
 The important parts here are
 
@@ -379,7 +379,6 @@ You won't need them if you use CRA.
 ## Substitute shortcuts for every .md files?
 
 Refer to [convertdir.js] and `$node convertdir.js <withshorcut> <withoutit>`.
-For example, type `$node convertdir.js posts GitHub` in your CLI.
 
 It will substitute shorcuts and use whole link for your .md files.
 
