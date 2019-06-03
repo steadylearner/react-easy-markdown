@@ -30,10 +30,10 @@ Write Markdown with React easily with some JavaScript modules for it.
 
 ---
 
-<!-- It turns it to absolute path at NPM -->
+<!-- NPM turns a link to absolute path when publish -->
 
 <!-- Use main image later -->
-<!-- [![react-easy-md-example](static/images/react-easy-md-example.png)](https://github.com/steadylearner/react-easy-md/tree/master/examples/react-easy-markdown-example) -->
+[![react-easy-md-example](static/images/react-easy-md.png)](https://github.com/steadylearner/react-easy-md/tree/master/examples/react-easy-markdown-example)
 
 This is forked version of [react-marked-markdown]. But the differences are
 
@@ -233,7 +233,7 @@ You can refer to [example code][examples] to understand it better or [tests](htt
 
 They use regex so you have to use it with caution and test for your .md file before you use them.
 
-If you want to use it for all files in directory, please refer to [convertdir.js].
+If you want to use it for all .md files in directory, please refer to [convertdir.js].
 
 ### html and markdown
 
@@ -376,11 +376,12 @@ You won't need them if you use CRA.
 1. [Steadylearner Blog Posts for .md file examples][blog]
 2. [React Easy Markdown Live example](https://www.steadylearner.com/markdown)
 
-## Substitute shortcut for every .md files?
+## Substitute shortcuts for every .md files?
 
-Use [convertdir.js] `$node convertdir.js <before> <after>` or `$node convertdir.js posts GitHub` etc.
+Refer to [convertdir.js] and `$node convertdir.js <withshorcut> <withoutit>`.
+For example, type `$node convertdir.js posts GitHub` in your CLI.
 
-(I prepared node executable example file for you. Use your set and edit it if you want.)
+It will substitute shorcuts and use whole link for your .md files.
 
 ## Where to learn and use markdown?
 

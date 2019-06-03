@@ -35,7 +35,6 @@ const after = param[1] || "GitHub";
 
 const directoryPath = path.join(__dirname, before);
 const compareDirectoryPath = path.join(__dirname, after);
-// const compareDirectoryPath = `${__dirname}/${after}`;
 
 makedir(compareDirectoryPath, { recursive: true }, (err) => {
    if (err) throw err;
