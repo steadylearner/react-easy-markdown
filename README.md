@@ -164,7 +164,7 @@ Then, Include link below in your index.html.
 Define set of shortcuts and links for your .md files.
 
 ```js
-const set=[
+const set = [
   ["s-", "https://www.steadlyearner.com"],
   ["l-", "https://www.linkedin.com/in"],
   ["y-", "https://www.youtube.com/channel/"],
@@ -210,13 +210,13 @@ don't have code to convert them.
 ```jsx
 import { substitute, unsubstitute } from "react-easy-md";
 
-const set={[
+const set = [
   ["s-", "https://www.steadlyearner.com"],
   ["l-", "https://www.linkedin.com/in"],
   ["y-", "https://www.youtube.com/channel/"],
   ["t-", "https://twitter.com/"],
   ["g-", "https://www.github.com"]
-]};
+];
 
 const short = ": s-, (s-)";
 const long = ": www.steadylearner.com, (https://www.steadylearner.com)";
