@@ -7,7 +7,7 @@
 [How to enable code syntax highlight in React App]: https://medium.com/@steadylearner/how-to-enable-code-syntax-highlight-in-react-app-38463498fa6e
 [How to write less code for links in markdown with React]: https://www.steadylearner.com/blog/read/How-to-write-less-code-for-links-in-markdown-with-React
 [marked]: https://github.com/markedjs/marked
-[convertdir.js]: https://github.com/steadylearner/react-easy-md/blob/master/directory/convertdir.js
+[convertdir.js]: https://github.com/steadylearner/react-easy-md/blob/master/convert_directory/convertdir.js
 
 <!-- \Shortcut -->
 
