@@ -1,4 +1,1 @@
-import identity from "./identity";
-import memoizeWith from "./memoizeWith";
-
-export { identity, memoizeWith, };
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),Object.defineProperty(exports,"identity",{enumerable:!0,get:function get(){return _identity.default}}),Object.defineProperty(exports,"memoizeWith",{enumerable:!0,get:function get(){return _memoizeWith.default}});var _identity=_interopRequireDefault(require("./identity")),_memoizeWith=_interopRequireDefault(require("./memoizeWith"));function _interopRequireDefault(a){return a&&a.__esModule?a:{default:a}}

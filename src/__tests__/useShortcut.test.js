@@ -1,16 +1,18 @@
-const { substitute, unsubstitute } = require("../");
+// Test for Regex
+
+const { useShortcut, reverseSet } = require("..");
 // We don't need to test unsubstitue because it is equal and only arguments are reversed.
 
 describe('Test simple cases', () => {
   const set = [["s-", "https://www.steadylearner.com"]];
   const short = ": s-, (s-), s-, https://www.steadylearner.com"
   const long = ": https://www.steadylearner.com, (https://www.steadylearner.com), s-, https://www.steadylearner.com"
-  test("Simply verfiy that set works with substitute. Values without ': ' or '('should not be affected.", () => {
-    expect(substitute(set)(short))
+  test("Simply verfiy that set works with useShortcut. Values without ': ' or '('should not be affected.", () => {
+    expect(useShortcut(set)(short))
       .toBe(long);
   });
-  test("Same but with unsubstitute", () => {
-    expect(unsubstitute(set)(long))
+  test("Same but with reverseSet to undo", () => {
+    expect(useShortcut(reverseSet(set))(long))
       .toBe(short);
   });
 });
@@ -40,12 +42,12 @@ describe('Test with part of .md file', () => {
     s-, https://www.steadylearner.com
   `
 
-  test("Verfiy that set works with substitute .md file. Values without ': ' or '('should not be affected.", () => {
-    expect(substitute(set)(short))
+  test("Verfiy that set works with useShortcut .md file. Values without ': ' or '('should not be affected.", () => {
+    expect(useShortcut(set)(short))
       .toBe(long);
   });
-  test("Same but with unsubstitute", () => {
-    expect(unsubstitute(set)(long))
+  test("Same but with reverseSet to undo", () => {
+    expect(useShortcut(reverseSet(set))(long))
       .toBe(short);
   });
 });

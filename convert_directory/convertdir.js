@@ -15,8 +15,9 @@ const {
 const set = [
   ["s-", "https://www.steadylearner.com"],
   ["n-", "https://www.npmjs.com"],
-]; // Use your set instead
+]; // Use your set for markdown link instead
 
+// equivalent to useShortcut in main function
 const substitute = (set = [["s-", "https://"]]) => (draft = "") => {
    let text = draft;
    set.forEach(value => {

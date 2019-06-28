@@ -19,6 +19,7 @@ let markdown = (input = "") => {
 
 markdown = memoizeWith(identity, markdown);
 
+// Use it for test only
 const substitutePrefix = (href = "https://www.steadylearner.com") => (set = ["s-", "https://"]) => {
   const substituteItOrNot = href.startsWith(set[0])
   if (substituteItOrNot) {
@@ -28,7 +29,8 @@ const substitutePrefix = (href = "https://www.steadylearner.com") => (set = ["s-
   }
 }
 
-// when render with React for each link inside MarkdownPreview.js
+// When render with React for each link inside MarkdownPreview.js
+// Different from using regexes for useShortcut
 let substitutePrefixes = (href = "https://www.steadylearner.com") => (set = [["s-", "https://"]]) => {
   const isHrefIncludeAnyPrefix = set.filter(x => href.startsWith(x[0]));
 
@@ -52,67 +54,55 @@ let reverseSet = (arrayOfArrays = [[]]) => {
 
 reverseSet = memoizeWith(identity, reverseSet);
 
-let substitute = (set = [["s-", "https://"]]) => (draft = "") => {
-   let text = draft;
-   set.forEach(value => {
-     // Build regexp for each value of set here
-     let regex = new RegExp(`: ${value[0]}`, 'g');
-     text = text.replace(regex, `: ${value[1]}`);
-      regex = new RegExp(`\[(]` + value[0], 'g'); // ESLint shows '\[', but without it, tests don't pass
-    //  regex = new RegExp(`(]` + value[0], 'g');
-     text = text.replace(regex, "(" + value[1]);
-   });
-   return text;
+// useShorcut for markdown <a> tags
+// They start with either : or (
+let useShortcut = (set = [["s-", "https://"]]) => (draft = "") => {
+  let text = draft;
+  set.forEach(value => {
+    // Build regexp for each value of set here
+    let regex = new RegExp(`: ${value[0]}`, 'g');
+    text = text.replace(regex, `: ${value[1]}`);
+    regex = new RegExp(`\[(]` + value[0], 'g'); // ESLint shows '\[', but without it, tests don't pass
+  //  regex = new RegExp(`(]` + value[0], 'g');
+    text = text.replace(regex, "(" + value[1]);
+  });
+  return text;
 };
 
-substitute = memoizeWith(identity, substitute);
+// When use want to undo this use reverseSet for the same set
 
-// set = ["g-", "https://www.github.com"]
+useShortcut = memoizeWith(identity, useShortcut);
 
-// Test with this for substitute
-// [Markdown-Tutorial]: g-
-
-// 1. [Start with Markdown-Tutorial][Markdown-Tutorial]
-// 2. [Markdown CheatSheet](g-/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
-
-// or substitue(reverseSet(set))(draft);
-let unsubstitute = (set = [["s-", "https://"]]) => (draft = "") => {
-  return substitute(reverseSet(set))(draft);
+let useRegex = (set = [
+  [/<br\s*?>/gi, "\r\n"],
+  [/&lt;/g, "<"],
+  [/&gt;/g, ">"],
+  [/&amp;/g, "&"],
+]) => (draft = "") => {
+  let text = draft;
+  set.forEach(value => {
+    text = text.replace(value[0], value[1]);
+  });
+  return text;
 };
 
-unsubstitute = memoizeWith(identity, unsubstitute);
+useRegex = memoizeWith(identity, useRegex);
 
-// [Markdown-Tutorial]: https://www.github.com.com/
-
-// Test with this for substitute
-// 1. [Start with Markdown-Tutorial][Markdown-Tutorial]
-// 2. [Markdown CheatSheet](https://www.github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
-
-function copy(value = "") { // copyToClipboardWithCode
+function copy(
+  value = "",
+  fn = useRegex(),
+) {
   const textField = document.createElement("textarea");
-  const brRegex = /<br\s*?>/gi;
-  // const brRegex = /<br\s*[\/]?>/gi;
 
-  const leftHTMLrapperRegex = /&lt;/g;
-  const rightHTMLWrapperRegex = /&gt;/g;
-
-  // 1.
   textField.innerText = value;
-  // 2.
   document.body.appendChild(textField);
 
-  // 3.
-
-  textField.value = textField.innerHTML
-    .replace(brRegex, "\r\n")
-    .replace(leftHTMLrapperRegex, "<")
-    .replace(rightHTMLWrapperRegex, ">");
-
-  // 4.
+  textField.value = fn(textField.innerHTML);
 
   textField.select(); // select copies html value
   document.execCommand("copy");
   textField.remove();
+  return;
 }
 
 // Use your own function to what to do with the contents of local file
@@ -136,24 +126,6 @@ function readLocalFileWithHow(e = {}, fn = {}) { // (How -> How to use it)
   };
   reader.readAsText(file);
 }
-
-// inside React class
-// readLocalFile(e) {
-//     let file = e.target.files[0];
-
-//     if (!file) {
-//         return;
-//     }
-
-//     let reader = new FileReader();
-//     reader.onload = (e) => {
-//         let contents = e.target.result;
-//         this.setState({
-//             value: contents,
-//         });
-//     };
-//     reader.readAsText(file);
-// }
 
 // Pass text value to save file and name if you want.
 // For example, saveTextFromWeb("This is from your markdown editor.", "README.md")
@@ -186,9 +158,9 @@ export {
   substitutePrefix,
   substitutePrefixes,
   //
-  substitute,
+  useShortcut,
+  useRegex,
   reverseSet,
-  unsubstitute,
   // Simple helper functions that you may need when you deal with markdown
   // Refer to www.steadylearner.com/markdown
   copy,
@@ -196,3 +168,9 @@ export {
   readLocalFileWithHow,
   saveTextFromWeb,
 }
+
+// [Markdown-Tutorial]: https://www.github.com.com/
+
+// Test with this for substitute
+// 1. [Start with Markdown-Tutorial][Markdown-Tutorial]
+// 2. [Markdown CheatSheet](https://www.github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)

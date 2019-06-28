@@ -386,10 +386,10 @@ It will substitute shorcuts and use whole link for your .md files.
 
  [Markdown-Tutorial]: https://www.markdowntutorial.com/
 
- 1. [Start with Markdown-Tutorial][Markdown-Tutorial]
+ 1. [Start with markdown][Markdown-Tutorial]
  2. [Markdown CheatSheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
- 3. [Use mark down for Github page](https://help.github.com/articles/getting-started-with-writing-and-formatting-on-github/)
- 4. [Learn Markdown in X Minutes](https://learnxinyminutes.com/docs/markdown)
+ 3. [How to use markdown for Github page](https://help.github.com/articles/getting-started-with-writing-and-formatting-on-github/)
+ 4. [Learn markdown in X Minutes](https://learnxinyminutes.com/docs/markdown)
  5. [Steadylearner Markdown Live Editor][markdown]
  6. [Markdown to html](https://markdowntohtml.com/)
  7. [Markdown Interpreter](https://dillinger.io/)

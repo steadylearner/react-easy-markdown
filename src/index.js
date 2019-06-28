@@ -9,9 +9,9 @@ import {
     saveTextFromWeb,
     substitutePrefix,
     substitutePrefixes,
-    substitute,
+    useShortcut,
+    useRegex,
     reverseSet,
-    unsubstitute,
 } from "./api";
 
 export {
@@ -25,10 +25,10 @@ export {
     readLocalFileWithHow,
     saveTextFromWeb,
     //
-    substitutePrefix, // It is just for test
+    substitutePrefix,
     substitutePrefixes,
     //
-    substitute,
+    useShortcut,
+    useRegex,
     reverseSet,
-    unsubstitute,
 };

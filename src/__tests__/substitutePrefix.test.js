@@ -1,4 +1,5 @@
-const { substitutePrefix, substitutePrefixes } = require("../");
+// Test for React
+const { substitutePrefix, substitutePrefixes } = require("..");
 
 // Test substituePrefixes with set API
 
