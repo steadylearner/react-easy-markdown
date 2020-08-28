@@ -22,7 +22,7 @@
     "build": "babel src -d lib --ignore src/__tests__ --no-comments"
   },
   "dependencies": {
-    "dompurify": "^1.0.10",
+    "dompurify": "^2.0.3",
     "highlight.js": "^9.15.6",
     "jsdom": "^14.0.0",
     "marked": "^0.6.2",
