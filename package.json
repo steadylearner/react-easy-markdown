@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "dompurify": "^1.0.10",
-    "highlight.js": "^9.15.6",
+    "highlight.js": "^10.4.1",
     "jsdom": "^14.0.0",
     "marked": "^0.6.2",
     "prop-types": "^15.7.2",
